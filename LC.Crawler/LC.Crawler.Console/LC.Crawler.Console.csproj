@@ -7,4 +7,32 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AsyncEnumerator" Version="4.0.2" />
+      <PackageReference Include="FluentDateTime" Version="2.1.0" />
+      <PackageReference Include="Flurl" Version="3.0.6" />
+      <PackageReference Include="log4net" Version="2.0.12" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+      <PackageReference Include="Volo.Abp.Autofac" Version="5.3.3" />
+      <PackageReference Include="Volo.Abp.EventBus" Version="5.3.3" />
+      <PackageReference Include="Volo.Abp.EventBus.Abstractions" Version="5.3.3" />
+      <PackageReference Include="Volo.Abp.EventBus.RabbitMQ" Version="5.3.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LC.Crawler.Client\LC.Crawler.Client.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Configurations\globalconfigs.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Configurations\log4net.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
