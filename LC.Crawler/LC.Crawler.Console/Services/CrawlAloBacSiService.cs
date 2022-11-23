@@ -330,7 +330,8 @@ public class CrawlAloBacSiService : CrawlLCArticleBaseService
                         RETRY:
                         try
                         {
-                            await articlePage.GotoAsync(articlePayload.Url, new PageGotoOptions {WaitUntil = WaitUntilState.DOMContentLoaded});
+                            await articlePage.GotoAsync(articlePayload.Url);
+                            await articlePage.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
                             await articlePage.Wait(500);
 
                             // 2 case main-post and main-view
