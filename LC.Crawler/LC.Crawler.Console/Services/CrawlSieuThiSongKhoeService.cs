@@ -143,6 +143,50 @@ public class CrawlSieuThiSongKhoeService : CrawlLCEcommerceBaseService
             }
         }
 
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/ba-bau/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/benh-gan/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/benh-phoi/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/benh-than/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/benh-tri/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/boi-bo-co-the/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/da-day-ruot/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/duong-tiet-nieu/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/giam-can/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/huyet-ap");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/mat/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/man-ngua-di-ung/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/mui-co-the/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/nao-than-kinh/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/phu-ne-sung-tay/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/rang-mieng/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/cham-soc-sac-dep/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/sinh-ly-nam/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/sinh-ly-nu/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/suy-gian-tinh-mach/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/tang-can/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/tang-chieu-cao/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/tieu-duong");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/tim-mach/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/toc/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/u-buou/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/viem-hong/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/viem-xoang/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thuc-pham-chuc-nang/xuong-khop/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/bo-qua-tang-suc-khoe");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/duoc-my-pham/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/duoc-my-pham/collagen-2/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/duoc-my-pham/nam-da/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/duoc-my-pham/trang-da/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/duoc-my-pham/tri-tham-mun/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thao-duoc/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thao-duoc/dong-trung-ha-thao");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thao-duoc/fucoidan");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thiet-bi-y-te/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thiet-bi-y-te/may-do-duong-huyet/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/thiet-bi-y-te/may-do-huyet-ap/");
+        menuUrls.Add("https://sieuthisongkhoe.com/loai/tra-thao-duoc/");
+
         return menuUrls;
     }
 
