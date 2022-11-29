@@ -13,10 +13,22 @@ public class CrawlConfig
     public bool ValidateArticleByDateTime { get; set; }
     public int TotalArticles { get; set; }
     public int DaysIntervalArticles { get; set; }
- 
+    public SucKhoeDoiSongConfig SucKhoeDoiSongConfig { get; set; }
 }
 
 public class GlobalConfig
 {
     public CrawlConfig CrawlConfig { get; set; }
+}
+
+public class SucKhoeDoiSongConfig
+{
+    public IList<Category> Categories { get; set; }
+}
+
+public class Category
+{
+    public string Name { get; set; }
+    public string Url { get; set; }
+    public IList<Category> SubCategories { get; set; }
 }

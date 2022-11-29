@@ -8,7 +8,7 @@
       }
     },
     "CrawlConfig": {
-      "UserDataDirRoot": "D:\\FBCA.NET\\UserDataDir",
+      
       "ActionDelay": 500,
       "TypingDelay": 10,
       "ScrollTimeout": 5000,
@@ -16,7 +16,41 @@
       "Crawl_BatchSize" : 100,
       "ValidateArticleByDateTime" : false,
       "TotalArticles" : 100,
-      "DaysIntervalArticles" : 3
+      "DaysIntervalArticles" : 3,
+      "SucKhoeDoiSongConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Y tế",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691474/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "COVID-19",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691628/{0}.htm"
+              },
+              {
+                "Name" : "Tin nóng y tế",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691475/{0}.htm"
+              },
+              {
+                "Name" : "Thành tựu y khoa",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691476/{0}.htm"
+              },
+              {
+                "Name" : "Blog thầy thuốc",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691477/{0}.htm"
+              },
+              {
+                "Name" : "Sự hi sinh thầm lặng",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691478/{0}.htm"
+              },
+              {
+                "Name" : "Camera bệnh viện",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691479/{0}.htm"
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
