@@ -234,9 +234,11 @@ public class CrawlAladinService : CrawlLCEcommerceBaseService
         
         #region Product attributes
 
+        // Nhà sản xuất, Đơn vị sản xuất, Hãng sản xuất
         var manufacturerLabel = "Nhà sản xuất";
-        var anotherManufacturerLabel = "Hãng sản xuất";
+        var anotherManufacturerLabel = "sản xuất";
         var ele_Manufacturer = await page.QuerySelectorAsync($"//p/strong[contains(text(),'{manufacturerLabel}') or contains(text(),'{anotherManufacturerLabel}')]/..") ??
+                               await page.QuerySelectorAsync($"//div/strong[contains(text(),'{manufacturerLabel}') or contains(text(),'{anotherManufacturerLabel}')]/..") ??
                                await page.QuerySelectorAsync($"//p/strong/span[contains(text(),'{manufacturerLabel}') or contains(text(),'{anotherManufacturerLabel}')]/../..");
         if (ele_Manufacturer is not null)
         {
@@ -251,6 +253,7 @@ public class CrawlAladinService : CrawlLCEcommerceBaseService
 
         var originLabel = "Xuất xứ";
         var ele_Origin = await page.QuerySelectorAsync($"//p/strong[contains(text(),'{originLabel}')]/..") ??
+                         await page.QuerySelectorAsync($"//div/strong[contains(text(),'{originLabel}')]/..") ??
                          await page.QuerySelectorAsync($"//p/strong/span[contains(text(),'{originLabel}')]/../..");
         if (ele_Origin is not null)
         {
@@ -259,6 +262,22 @@ public class CrawlAladinService : CrawlLCEcommerceBaseService
             {
                 Key   = originLabel,
                 Value = origin.Replace($"{originLabel}:", string.Empty).Replace($"{originLabel} :", string.Empty)
+            });
+        }
+
+        // Bảo quản, cách bảo quản, quy cách bảo quản, hướng dẫn bảo quản
+        var preservationLabel = "Bảo quản";
+        var anotherPreservationLabel = "bảo quản";
+        var ele_preservation = await page.QuerySelectorAsync($"//p/strong[contains(text(),'{preservationLabel}') or contains(text(),'{anotherPreservationLabel}')]/..") ??
+                               await page.QuerySelectorAsync($"//div/strong[contains(text(),'{preservationLabel}') or contains(text(),'{anotherPreservationLabel}')]/..") ??
+                               await page.QuerySelectorAsync($"//p/strong/span[contains(text(),'{preservationLabel}') or contains(text(),'{anotherPreservationLabel}')]/../..");
+        if (ele_preservation is not null)
+        {
+            var preservation = await ele_preservation.InnerTextAsync();
+            product.Attributes.Add(new EcommerceProductAttribute()
+            {
+                Key   = preservationLabel,
+                Value = preservation.Replace($"{preservationLabel}:", string.Empty).Replace($"{preservationLabel} :", string.Empty)
             });
         }
 
@@ -274,9 +293,13 @@ public class CrawlAladinService : CrawlLCEcommerceBaseService
             });
         }
 
+        // Đóng gói, Quy cách đóng gói, Quy cách
+        // Difference: Quy cách đóng gói | Quy cách bảo quản
         var usageFormLabel = "Đóng gói";
-        var ele_UsageForm = await page.QuerySelectorAsync($"//p/strong[contains(text(),'{usageFormLabel}')]/..") ??
-                            await page.QuerySelectorAsync($"//p/strong/span[contains(text(),'{usageFormLabel}')]/../..");
+        var anotherUsageFormLabel = "Quy cách";
+        var ele_UsageForm = await page.QuerySelectorAsync($"//p/strong[contains(text(),'{usageFormLabel}') or contains(text(),'{anotherUsageFormLabel}') and not(contains(text(),'{anotherPreservationLabel}'))]/..") ?? 
+                            await page.QuerySelectorAsync($"//div/strong[contains(text(),'{usageFormLabel}') or contains(text(),'{anotherUsageFormLabel}') and not(contains(text(),'{anotherPreservationLabel}'))]/..") ??
+                            await page.QuerySelectorAsync($"//p/strong/span[contains(text(),'{usageFormLabel}') or contains(text(),'{anotherUsageFormLabel}') and not(contains(text(),'{anotherPreservationLabel}'))]/../..");
         if (ele_UsageForm is not null)
         {
             var usageForm = await ele_UsageForm.InnerTextAsync();
