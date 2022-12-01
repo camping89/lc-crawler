@@ -1170,6 +1170,6 @@ public static class StringExtensions
 
         public static string RemoveHrefFromA(this string value)
         {
-            return Regex.Replace(value, "href=\".*?\"", string.Empty);
+            return value.IsNullOrEmpty() ? string.Empty : Regex.Replace(value, "href=\".*?\"", string.Empty);
         }
     }

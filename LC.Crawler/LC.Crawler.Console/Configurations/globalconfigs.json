@@ -8,228 +8,759 @@
       }
     },
     "CrawlConfig": {
-      
       "ActionDelay": 500,
       "TypingDelay": 10,
       "ScrollTimeout": 5000,
-      "Crawl_MaxThread" : 10,
-      "Crawl_BatchSize" : 100,
-      "ValidateArticleByDateTime" : false,
-      "TotalArticles" : 100,
-      "DaysIntervalArticles" : 3,
-      "SucKhoeDoiSongConfig" : {
-        "Categories" : [
+      "Crawl_MaxThread": 10,
+      "Crawl_BatchSize": 100,
+      "ValidateArticleByDateTime": true,
+      "TotalArticles": 100,
+      "DaysIntervalArticles": 1200,
+      "SucKhoeDoiSongConfig": {
+        "Categories": [
           {
-            "Name" : "Y tế",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691474/{0}.htm",
-            "SubCategories" : [
+            "Name": "Y tế",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691474/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "COVID-19",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691628/{0}.htm"
+                "Name": "COVID-19",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691628/{0}.htm"
               },
               {
-                "Name" : "Tin nóng y tế",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691475/{0}.htm"
+                "Name": "Tin nóng y tế",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691475/{0}.htm"
               },
               {
-                "Name" : "Thành tựu y khoa",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691476/{0}.htm"
+                "Name": "Thành tựu y khoa",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691476/{0}.htm"
               },
               {
-                "Name" : "Blog thầy thuốc",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691477/{0}.htm"
+                "Name": "Blog thầy thuốc",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691477/{0}.htm"
               },
               {
-                "Name" : "Sự hi sinh thầm lặng",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691478/{0}.htm"
+                "Name": "Sự hi sinh thầm lặng",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691478/{0}.htm"
               },
               {
-                "Name" : "Camera bệnh viện",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691479/{0}.htm"
+                "Name": "Camera bệnh viện",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691479/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Sức khỏe TV",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691481/{0}.htm",
-            "SubCategories" : [
+            "Name": "Sức khỏe TV",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691481/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Bản tin sức khỏe",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691482/{0}.htm"
+                "Name": "Bản tin sức khỏe",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691482/{0}.htm"
               },
               {
-                "Name" : "Truyền hình trực tuyến",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691484/{0}.htm"
+                "Name": "Truyền hình trực tuyến",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691484/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Y học 360",            
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691499/{0}.htm",
-            "SubCategories" : [
+            "Name": "Y học 360",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691499/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Bệnh người cao tuổi",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691500/{0}.htm"
+                "Name": "Bệnh người cao tuổi",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691500/{0}.htm"
               },
               {
-                "Name" : "Bệnh thường gặp",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691501/{0}.htm"
+                "Name": "Bệnh thường gặp",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691501/{0}.htm"
               },
               {
-                "Name" : "Bệnh phụ nữ",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691502/{0}.htm"
+                "Name": "Bệnh phụ nữ",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691502/{0}.htm"
               },
               {
-                "Name" : "Bệnh nam giới",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691503/{0}.htm"
+                "Name": "Bệnh nam giới",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691503/{0}.htm"
               },
               {
-                "Name" : "Bệnh trẻ em",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691504/{0}.htm"
+                "Name": "Bệnh trẻ em",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691504/{0}.htm"
               },
               {
-                "Name" : "Sức khỏe tâm hồn",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691505/{0}.htm"
+                "Name": "Sức khỏe tâm hồn",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691505/{0}.htm"
               },
               {
-                "Name" : "Ung thư",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691506/{0}.htm"
+                "Name": "Ung thư",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691506/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Y học cổ truyền",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691490/{0}.htm",
-            "SubCategories" : [
+            "Name": "Y học cổ truyền",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691490/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Thầy giỏi – thuốc hay",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691491/{0}.htm"
+                "Name": "Thầy giỏi – thuốc hay",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691491/{0}.htm"
               },
               {
-                "Name" : "Bệnh viện - phòng khám",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691492/{0}.htm"
+                "Name": "Bệnh viện - phòng khám",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691492/{0}.htm"
               },
               {
-                "Name" : "Vị thuốc quanh ta",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691493/{0}.htm"
+                "Name": "Vị thuốc quanh ta",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691493/{0}.htm"
               },
               {
-                "Name" : "Chữa bệnh không dùng thuốc",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691494/{0}.htm"
-              }              
-            ]
-          },
-          {
-            "Name" : "Giới tính",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691518/{0}.htm",
-            "SubCategories" : [
-              {
-                "Name" : "Hỏi đáp phòng the",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691519/{0}.htm"
-              },
-              {
-                "Name" : "Sức khỏe sinh sản",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691520/{0}.htm"
-              },
-              {
-                "Name" : "Bệnh lây truyền",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691521/{0}.htm"
+                "Name": "Chữa bệnh không dùng thuốc",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691494/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Dinh dưỡng",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691512/{0}.htm",
-            "SubCategories" : [
+            "Name": "Giới tính",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691518/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Dinh dưỡng mẹ và bé",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691513/{0}.htm"
+                "Name": "Hỏi đáp phòng the",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691519/{0}.htm"
               },
               {
-                "Name" : "Dinh dưỡng người cao tuổi",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691514/{0}.htm"
+                "Name": "Sức khỏe sinh sản",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691520/{0}.htm"
               },
               {
-                "Name" : "Chế độ ăn người bệnh",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691515/{0}.htm"
-              },
-              {
-                "Name" : "Cảnh giác thực phẩm",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691516/{0}.htm"
-              },
-              {
-                "Name" : "Thực phẩm chức năng",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691517/{0}.htm"
+                "Name": "Bệnh lây truyền",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691521/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Khỏe - Đẹp",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691508/{0}.htm",
-            "SubCategories" : [
+            "Name": "Dinh dưỡng",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691512/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Mỹ phẩm",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691509/{0}.htm"
+                "Name": "Dinh dưỡng mẹ và bé",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691513/{0}.htm"
               },
               {
-                "Name" : "Thẩm mỹ",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691510/{0}.htm"
+                "Name": "Dinh dưỡng người cao tuổi",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691514/{0}.htm"
               },
               {
-                "Name" : "Bài tập khỏe đẹp",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691511/{0}.htm"
+                "Name": "Chế độ ăn người bệnh",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691515/{0}.htm"
+              },
+              {
+                "Name": "Cảnh giác thực phẩm",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691516/{0}.htm"
+              },
+              {
+                "Name": "Thực phẩm chức năng",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691517/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Phòng mạch online",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691507/{0}.htm"
-          },
-          {
-            "Name" : "Văn hóa – Giải trí",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691524/{0}.htm"
-          },
-          {
-            "Name" : "Đời sống",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691525/{0}.htm"
-          },
-          {
-            "Name" : "Dược",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691485/{0}.htm",
-            "SubCategories" : [
+            "Name": "Khỏe - Đẹp",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691508/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "An toàn dùng thuốc",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691486/{0}.htm"
+                "Name": "Mỹ phẩm",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691509/{0}.htm"
               },
               {
-                "Name" : "Thông tin dược học",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691487/{0}.htm"
+                "Name": "Thẩm mỹ",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691510/{0}.htm"
               },
               {
-                "Name" : "Thuốc mới",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691488/{0}.htm"
-              },
-              {
-                "Name" : "Vaccine",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691489/{0}.htm"
+                "Name": "Bài tập khỏe đẹp",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691511/{0}.htm"
               }
             ]
           },
           {
-            "Name" : "Nhịp cầu Nhân ái",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691523/{0}.htm"
+            "Name": "Phòng mạch online",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691507/{0}.htm"
           },
           {
-            "Name" : "Thị trường",
-            "Url" : "https://suckhoedoisong.vn/timelinelist/1691522/{0}.htm",
-            "SubCategories" : [
+            "Name": "Văn hóa – Giải trí",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691524/{0}.htm"
+          },
+          {
+            "Name": "Đời sống",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691525/{0}.htm"
+          },
+          {
+            "Name": "Dược",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691485/{0}.htm",
+            "SubCategories": [
               {
-                "Name" : "Nhãn hàng sai phạm",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691527/{0}.htm"
+                "Name": "An toàn dùng thuốc",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691486/{0}.htm"
               },
               {
-                "Name" : "Doanh nghiệp",
-                "Url" : "https://suckhoedoisong.vn/timelinelist/1691528/{0}.htm"
+                "Name": "Thông tin dược học",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691487/{0}.htm"
+              },
+              {
+                "Name": "Thuốc mới",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691488/{0}.htm"
+              },
+              {
+                "Name": "Vaccine",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691489/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name": "Nhịp cầu Nhân ái",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691523/{0}.htm"
+          },
+          {
+            "Name": "Thị trường",
+            "Url": "https://suckhoedoisong.vn/timelinelist/1691522/{0}.htm",
+            "SubCategories": [
+              {
+                "Name": "Nhãn hàng sai phạm",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691527/{0}.htm"
+              },
+              {
+                "Name": "Doanh nghiệp",
+                "Url": "https://suckhoedoisong.vn/timelinelist/1691528/{0}.htm"
+              }
+            ]
+          }
+        ]
+      },
+      "AlobacsiConfig": {
+        "Categories": [
+          {
+            "Name": "Chân dung bác sĩ",
+            "Url": "https://alobacsi.com/chan-dung-bac-si-c1007/p-{0}/"
+          },
+          {
+            "Name": "Video",
+            "Url": "https://alobacsi.com/video-c280/p-{0}/"
+          },
+          {
+            "Name": "Podcast",
+            "Url": "https://alobacsi.com/tin-y-te-c308/p-{0}/"
+          },
+          {
+            "Name": "Giao lưu trực tuyến",
+            "Url": "https://alobacsi.com/giao-luu-truc-tuyen-c355/p-{0}/",
+            "SubCategories": [
+              {
+                "Name": "Bệnh di truyền",
+                "Url": "https://alobacsi.com/benh-di-truyen-c956/p-{0}/"
+              },
+              {
+                "Name": "Bệnh tình dục",
+                "Url": "https://alobacsi.com/benh-tinh-duc-c957/p-{0}/"
+              },
+              {
+                "Name": "Bệnh truyền nhiễm",
+                "Url": "https://alobacsi.com/benh-truyen-nhiem-c955/p-{0}/"
+              },
+              {
+                "Name": "Cảm cúm",
+                "Url": "https://alobacsi.com/cam-cum-c1006/p-{0}/"
+              },
+              {
+                "Name": "Cấy ghép tạng",
+                "Url": "https://alobacsi.com/cay-ghep-tang-c954/p-{0}/"
+              },
+              {
+                "Name": "Chấn thương chỉnh hình",
+                "Url": "https://alobacsi.com/chan-thuong-chinh-hinh-c1005/p-{0}/"
+              },
+              {
+                "Name": "Chẩn đoán hình ảnh - Giải phẫu bệnh",
+                "Url": "https://alobacsi.com/chan-doan-hinh-anh-giai-phau-benh-c947/p-{0}/"
+              },
+              {
+                "Name": "Cơ xương khớp",
+                "Url": "https://alobacsi.com/co-xuong-khop-c941/p-{0}/"
+              },
+              {
+                "Name": "COVID-19",
+                "Url": "https://alobacsi.com/covid-19-c958/p-{0}/"
+              },
+              {
+                "Name": "Da - Tóc - Da liễu",
+                "Url": "https://alobacsi.com/da-toc-da-lieu-c1003/p-{0}/"
+              },
+              {
+                "Name": "Dinh dưỡng",
+                "Url": "https://alobacsi.com/dinh-duong-c942/p-{0}/"
+              },
+              {
+                "Name": "Dược",
+                "Url": "https://alobacsi.com/duoc-c950/p-{0}/"
+              },
+              {
+                "Name": "Gan Mật Tụy ",
+                "Url": "https://alobacsi.com/gan-mat-tuy-c1000/p-{0}/"
+              },
+              {
+                "Name": "Hô hấp",
+                "Url": "https://alobacsi.com/ho-hap-c933/p-{0}/"
+              },
+              {
+                "Name": "Huyết học ",
+                "Url": "https://alobacsi.com/huyet-hoc-c944/p-{0}/"
+              },
+              {
+                "Name": "Kiểm soát nhiễm khuẩn",
+                "Url": "https://alobacsi.com/kiem-soat-nhiem-khuan-c949/p-{0}/"
+              },
+              {
+                "Name": "Lão khoa",
+                "Url": "https://alobacsi.com/lao-khoa-c929/p-{0}/"
+              },
+              {
+                "Name": "Mắt",
+                "Url": "https://alobacsi.com/mat-c938/p-{0}/"
+              },
+              {
+                "Name": "Nam khoa ",
+                "Url": "https://alobacsi.com/nam-khoa-c928/p-{0}/"
+              },
+              {
+                "Name": "Ngoại Thần kinh",
+                "Url": "https://alobacsi.com/ngoai-than-kinh-c1002/p-{0}/"
+              },
+              {
+                "Name": "Nhi khoa",
+                "Url": "https://alobacsi.com/nhi-khoa-c926/p-{0}/"
+              },
+              {
+                "Name": "Nội Thần kinh ",
+                "Url": "https://alobacsi.com/than-kinh-dau-dau-c952/p-{0}/"
+              },
+              {
+                "Name": "Nội tiết - Tiểu đường",
+                "Url": "https://alobacsi.com/noi-tiet-tieu-duong-c940/p-{0}/"
+              },
+              {
+                "Name": "Nội tổng hợp ",
+                "Url": "https://alobacsi.com/noi-tong-hop-c925/p-{0}/"
+              },
+              {
+                "Name": "Phổi",
+                "Url": "https://alobacsi.com/phoi-c934/p-{0}/"
+              },
+              {
+                "Name": "Răng hàm mặt",
+                "Url": "https://alobacsi.com/rang-ham-mat-c932/p-{0}/"
+              },
+              {
+                "Name": "Sản phụ khoa",
+                "Url": "https://alobacsi.com/san-phu-khoa-c927/p-{0}/"
+              },
+              {
+                "Name": "Sinh hóa - Vi sinh",
+                "Url": "https://alobacsi.com/sinh-hoa-vi-sinh-c946/p-{0}/"
+              },
+              {
+                "Name": "Tai Mũi họng",
+                "Url": "https://alobacsi.com/tai-mui-hong-c931/p-{0}/"
+              },
+              {
+                "Name": "Tâm lý - Tâm thần",
+                "Url": "https://alobacsi.com/than-kinh-tam-than-kinh-c930/p-{0}/"
+              },
+              {
+                "Name": "Thẩm mỹ",
+                "Url": "https://alobacsi.com/tham-my-c937/p-{0}/"
+              },
+              {
+                "Name": "Thận - Tiết Niệu",
+                "Url": "https://alobacsi.com/than-tiet-nieu-c936/p-{0}/"
+              },
+              {
+                "Name": "Tiêu hóa ",
+                "Url": "https://alobacsi.com/tieu-hoa-gan-mat-c935/p-{0}/"
+              },
+              {
+                "Name": "Tim mạch ",
+                "Url": "https://alobacsi.com/tim-mach-c939/p-{0}/"
+              },
+              {
+                "Name": "Ung thư - Y học hạt nhân",
+                "Url": "https://alobacsi.com/ung-thu-y-hoc-hat-nhan-c943/p-{0}/"
+              },
+              {
+                "Name": "Vật lý trị liệu ",
+                "Url": "https://alobacsi.com/vat-ly-tri-lieu-c945/p-{0}/"
+              },
+              {
+                "Name": "Y học cổ truyền",
+                "Url": "https://alobacsi.com/y-hoc-co-truyen-c1001/p-{0}/"
+              },
+              {
+                "Name": "Y học thể thao",
+                "Url": "https://alobacsi.com/y-hoc-the-thao-c951/p-{0}/"
+              },
+              {
+                "Name": "Đột quỵ",
+                "Url": "https://alobacsi.com/dot-quy-c959/p-{0}/"
+              }
+            ]
+          },
+          {
+            "Name": "Bệnh thường gặp",
+            "Url": "https://alobacsi.com/benh-thuong-gap-c161/p-{0}/",
+            "SubCategories": [
+              {
+                "Name": "Trẻ em",
+                "Url": "https://alobacsi.com/tre-em-c338/p-{0}/"
+              },
+              {
+                "Name": "Tuổi Teen",
+                "Url": "https://alobacsi.com/benh-tuoi-teen-c340/p-{0}/"
+              },
+              {
+                "Name": "Phụ nữ",
+                "Url": "https://alobacsi.com/phu-nu-c336/p-{0}/",
+                "SubCategories": [
+                  {
+                    "Name": "Kinh nguyệt",
+                    "Url": "https://alobacsi.com/kinh-nguyet-c595/p-{0}/"
+                  },
+                  {
+                    "Name": "Ung thư vú",
+                    "Url": "https://alobacsi.com/ung-thu-vu-c538/p-{0}/"
+                  },
+                  {
+                    "Name": "Tiền mãn kinh",
+                    "Url": "https://alobacsi.com/tien-man-kinh-c800/p-{0}/"
+                  },
+                  {
+                    "Name": "Mang thai hộ",
+                    "Url": "https://alobacsi.com/mang-thai-ho-c811/p-{0}/"
+                  }
+                ]
+              },
+              {
+                "Name": "Giảm đau hiệu quả",
+                "Url": "https://alobacsi.com/giam-dau-hieu-qua/p-{0}/"
+              },
+              {
+                "Name": "Mẹ & Con",
+                "Url": "https://alobacsi.com/me-con-c272/p-{0}/",
+                "SubCategories": [
+                  {
+                    "Name": "Sắp có baby",
+                    "Url": "https://alobacsi.com/sap-co-baby-c315/p-{0}/"
+                  },
+                  {
+                    "Name": "Bầu bì",
+                    "Url": "https://alobacsi.com/bau-bi-c312/p-{0}/"
+                  },
+                  {
+                    "Name": "Sau sinh",
+                    "Url": "https://alobacsi.com/sau-sinh-c274/p-{0}/"
+                  }
+                ]
+              },
+              {
+                "Name": "Nam giới",
+                "Url": "https://alobacsi.com/nam-gioi-c337/p-{0}/",
+                "SubCategories": [
+                  {
+                    "Name": "Tuyến tiền liệt",
+                    "Url": "https://alobacsi.com/tuyen-tien-liet-c478/p-{0}/"
+                  },
+                  {
+                    "Name": "Hẹp bao quy đầu",
+                    "Url": "https://alobacsi.com/hep-bao-quy-dau-c479/p-{0}/"
+                  }
+                ]
+              },
+              {
+                "Name": "Bệnh ho ở trẻ em",
+                "Url": "https://alobacsi.com/benh-ho-o-tre-em/p-{0}/"
+              },
+              {
+                "Name": "Lão khoa",
+                "Url": "https://alobacsi.com/lao-khoa-c339/p-{0}/"
+              },
+              {
+                "Name": "Bệnh Nghề nghiệp",
+                "Url": "https://alobacsi.com/benh-nghe-nghiep-c960/p-{0}/"
+              },
+              {
+                "Name": "Cảm cúm",
+                "Url": "https://alobacsi.com/cam-cum-c995/p-{0}/"
+              },
+              {
+                "Name": "Cấy ghép tạng",
+                "Url": "https://alobacsi.com/cay-ghep-tang-c481/p-{0}/"
+              },
+              {
+                "Name": "Cơ - Xương - Khớp",
+                "Url": "https://alobacsi.com/co-xuong-khop-c183/p-{0}/"
+              },
+              {
+                "Name": "Chấn thương chỉnh hình",
+                "Url": "https://alobacsi.com/chan-thuong-chinh-hinh-c996/p-{0}/"
+              },
+              {
+                "Name": "Da - Tóc - Da liễu",
+                "Url": "https://alobacsi.com/da-toc-da-lieu-c188/p-{0}/"
+              },
+              {
+                "Name": "Di truyền",
+                "Url": "https://alobacsi.com/benh-di-truyen-c190/p-{0}/"
+              },
+              {
+                "Name": "Dị ứng - Mề đay",
+                "Url": "https://alobacsi.com/di-ung-me-day-c426/p-{0}/"
+              },
+              {
+                "Name": "Gan Mật Tụy ",
+                "Url": "https://alobacsi.com/gan-mat-tuy-c997/p-{0}/"
+              },
+              {
+                "Name": "Giải độc - Chống độc",
+                "Url": "https://alobacsi.com/giai-doc-chong-doc-c921/p-{0}/"
+              },
+              {
+                "Name": " Hô hấp",
+                "Url": "https://alobacsi.com/ho-hap-c172/p-{0}/"
+              },
+              {
+                "Name": "Huyết học",
+                "Url": "https://alobacsi.com/huyet-hoc-c191/p-{0}/"
+              },
+              {
+                "Name": "Mắt",
+                "Url": "https://alobacsi.com/mat-c184/p-{0}/"
+              },
+              {
+                "Name": "Ngoại khoa",
+                "Url": "https://alobacsi.com/ngoai-khoa-c399/p-{0}/"
+              },
+              {
+                "Name": "Nội tiết - Tiểu đường",
+                "Url": "https://alobacsi.com/noi-tiet-c332/p-{0}/"
+              },
+              {
+                "Name": "Nội Thần kinh ",
+                "Url": "https://alobacsi.com/than-kinh-dau-dau-c193/p-{0}/"
+              },
+              {
+                "Name": "Ngoại Thần kinh",
+                "Url": "https://alobacsi.com/ngoai-than-kinh-c965/p-{0}/"
+              },
+              {
+                "Name": "Phổi",
+                "Url": "https://alobacsi.com/phoi-c966/p-{0}/"
+              },
+              {
+                "Name": "Răng - Nha khoa",
+                "Url": "https://alobacsi.com/rang-ham-mat-c186/p-{0}/"
+              },
+              {
+                "Name": "Hàm - Mặt",
+                "Url": "https://alobacsi.com/ham-mat-c998/p-{0}/"
+              },
+              {
+                "Name": "Tai - Mũi - Họng",
+                "Url": "https://alobacsi.com/tai-mui-hong-c185/p-{0}/"
+              },
+              {
+                "Name": "Tâm lý - Tâm thần ",
+                "Url": "https://alobacsi.com/tam-ly-c539/p-{0}/"
+              },
+              {
+                "Name": "Thận ",
+                "Url": "https://alobacsi.com/than-tiet-nieu-c175/p-{0}/"
+              },
+              {
+                "Name": "Tiết Niệu ",
+                "Url": "https://alobacsi.com/tiet-nieu-c999/p-{0}/"
+              },
+              {
+                "Name": "Tiêu hóa ",
+                "Url": "https://alobacsi.com/tieu-hoa-gan-mat-c834/p-{0}/",
+                "SubCategories": [
+                  {
+                    "Name": "Tư vấn tiêu hoá cùng ThS.BS Trần Ngọc Lưu Phương",
+                    "Url": "https://alobacsi.com/tu-van-tieu-hoa-cung-thsbs-tran-ngoc-luu-phuong-c922/p-{0}/"
+                  },
+                  {
+                    "Name": "Tiêu hóa",
+                    "Url": "https://alobacsi.com/tieu-hoa-c173/p-{0}/",
+                    "SubCategories": [
+                      {
+                        "Name": "Ung thư đại tràng",
+                        "Url": "https://alobacsi.com/ung-thu-dai-trang-c516/p-{0}/"
+                      }
+                    ]
+                  },
+                  {
+                    "Name": "Gan",
+                    "Url": "https://alobacsi.com/gan-c484/p-{0}/"
+                  },
+                  {
+                    "Name": "Hành trình chăm sóc gan",
+                    "Url": "https://alobacsi.com/hanh-trinh-cham-soc-gan-c818/p-{0}/"
+                  }
+                ]
+              },
+              {
+                "Name": "Tim mạch",
+                "Url": "https://alobacsi.com/huyet-ap-tim-mach-c333/p-{0}/"
+              },
+              {
+                "Name": " Tự miễn",
+                "Url": "https://alobacsi.com/benh-tu-mien-c981/p-{0}/"
+              },
+              {
+                "Name": "Truyền nhiễm",
+                "Url": "https://alobacsi.com/benh-truyen-nhiem-c189/p-{0}/"
+              },
+              {
+                "Name": "Ung thư",
+                "Url": "https://alobacsi.com/ung-thu-c327/p-{0}/"
+              }
+            ]
+          },
+          {
+            "Name": "Bệnh tìm kiếm nhiều",
+            "Url": "https://alobacsi.com/benh-duoc-tim-kiem-nhieu-nhat-c984/p-{0}/",
+            "SubCategories": [
+              {
+                "Name": "Bệnh dại",
+                "Url": "https://alobacsi.com/benh-dai-c712/p-{0}/"
+              },
+              {
+                "Name": "Bệnh giun - sán",
+                "Url": "https://alobacsi.com/giun-san-c739/p-{0}/"
+              },
+              {
+                "Name": "Bệnh lao phổi",
+                "Url": "https://alobacsi.com/benh-lao-c980/p-{0}/"
+              },
+              {
+                "Name": "Giảm đau hiệu quả",
+                "Url": "https://alobacsi.com/giam-dau-hieu-qua/p-{0}/"
+              },
+              {
+                "Name": "Bệnh Tình dục",
+                "Url": "https://alobacsi.com/benh-tinh-duc-c775/p-{0}/"
+              },
+              {
+                "Name": "Bệnh uốn ván",
+                "Url": "https://alobacsi.com/benh-uon-van-c985/p-{0}/"
+              },
+              {
+                "Name": "Bệnh ho ở trẻ em",
+                "Url": "https://alobacsi.com/benh-ho-o-tre-em/p-{0}/"
+              },
+              {
+                "Name": "COVID -19",
+                "Url": "https://alobacsi.com/covid-19-c971/p-{0}/"
+              },
+              {
+                "Name": "Đau đầu - mất ngủ",
+                "Url": "https://alobacsi.com/dau-dau-mat-ngu-c986/p-{0}/"
+              },
+              {
+                "Name": "Đột quỵ",
+                "Url": "https://alobacsi.com/dot-quy-c829/p-{0}/"
+              },
+              {
+                "Name": "Giời leo",
+                "Url": "https://alobacsi.com/gioi-leo-c987/p-{0}/"
+              },
+              {
+                "Name": "HIV - AIDS",
+                "Url": "https://alobacsi.com/hiv-aids-c306/p-{0}/"
+              },
+              {
+                "Name": "Hiếm muộn",
+                "Url": "https://alobacsi.com/sinh-san-nu-c544/p-{0}/"
+              },
+              {
+                "Name": "Rối loạn tiền đình ",
+                "Url": "https://alobacsi.com/roi-loan-tien-dinh-c990/p-{0}/"
+              },
+              {
+                "Name": "Thắc mắc \"chuyện ấy\"",
+                "Url": "https://alobacsi.com/thac-mac-chuyen-ay-c967/p-{0}/"
+              },
+              {
+                "Name": "Trào ngược ",
+                "Url": "https://alobacsi.com/trao-nguoc-c991/p-{0}/"
+              },
+              {
+                "Name": "Tránh thai",
+                "Url": "https://alobacsi.com/tranh-thai-c772/p-{0}/"
+              },
+              {
+                "Name": "Viêm gan A",
+                "Url": "https://alobacsi.com/viem-gan-a-c992/p-{0}/"
+              },
+              {
+                "Name": "Viêm gan B",
+                "Url": "https://alobacsi.com/viem-gan-b-c1004/p-{0}/"
+              },
+              {
+                "Name": "Viêm xoang",
+                "Url": "https://alobacsi.com/viem-gan-b-c993/p-{0}/"
+              },
+              {
+                "Name": "Viêm dạ dày HP",
+                "Url": "https://alobacsi.com/hp-da-day-c989/p-{0}/"
+              },
+              {
+                "Name": "Sơ cấp cứu",
+                "Url": "https://alobacsi.com/so-cap-cuu-c546/p-{0}/"
+              },
+              {
+                "Name": "Sốt xuất huyết ",
+                "Url": "https://alobacsi.com/sot-xuat-huyet-ebola-c793/p-{0}/"
+              }
+            ]
+          },
+          {
+            "Name": "Dinh dưỡng",
+            "Url": "https://alobacsi.com/dinh-duong-c164/p-{0}/"
+          },
+          {
+            "Name": "Tiêm chủng - Xét nghiệm",
+            "Url": "https://alobacsi.com/tiem-chung-xet-nghiem-c243/p-{0}/"
+          },
+          {
+            "Name": "Y học Cổ truyền",
+            "Url": "https://alobacsi.com/y-hoc-co-truyen-c802/p-{0}/",
+            "SubCategories": [
+              {
+                "Name": "Đông y",
+                "Url": "https://alobacsi.com/dong-y-c347/p-{0}/"
+              },
+              {
+                "Name": "Thầy hay - Thuốc tốt",
+                "Url": "https://alobacsi.com/thay-hay-thuoc-tot-c401/p-{0}/"
+              }
+            ]
+          },
+          {
+            "Name": "Khỏe đẹp",
+            "Url": "https://alobacsi.com/khoe-dep-c165/p-{0}/",
+            "SubCategories": [
+              {
+                "Name": "Tư vấn Làm đẹp",
+                "Url": "https://alobacsi.com/tu-van-lam-dep-c396/p-{0}/"
+              },
+              {
+                "Name": "Thể dục - Thiền - Yoga",
+                "Url": "https://alobacsi.com/the-duc-thien-yoga-c316/p-{0}/"
               }
             ]
           }
