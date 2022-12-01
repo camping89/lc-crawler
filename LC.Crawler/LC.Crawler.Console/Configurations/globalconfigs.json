@@ -48,6 +48,190 @@
                 "Url" : "https://suckhoedoisong.vn/timelinelist/1691479/{0}.htm"
               }
             ]
+          },
+          {
+            "Name" : "Sức khỏe TV",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691481/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Bản tin sức khỏe",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691482/{0}.htm"
+              },
+              {
+                "Name" : "Truyền hình trực tuyến",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691484/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Y học 360",            
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691499/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Bệnh người cao tuổi",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691500/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh thường gặp",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691501/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh phụ nữ",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691502/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh nam giới",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691503/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh trẻ em",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691504/{0}.htm"
+              },
+              {
+                "Name" : "Sức khỏe tâm hồn",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691505/{0}.htm"
+              },
+              {
+                "Name" : "Ung thư",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691506/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Y học cổ truyền",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691490/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Thầy giỏi – thuốc hay",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691491/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh viện - phòng khám",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691492/{0}.htm"
+              },
+              {
+                "Name" : "Vị thuốc quanh ta",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691493/{0}.htm"
+              },
+              {
+                "Name" : "Chữa bệnh không dùng thuốc",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691494/{0}.htm"
+              }              
+            ]
+          },
+          {
+            "Name" : "Giới tính",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691518/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Hỏi đáp phòng the",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691519/{0}.htm"
+              },
+              {
+                "Name" : "Sức khỏe sinh sản",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691520/{0}.htm"
+              },
+              {
+                "Name" : "Bệnh lây truyền",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691521/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Dinh dưỡng",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691512/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Dinh dưỡng mẹ và bé",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691513/{0}.htm"
+              },
+              {
+                "Name" : "Dinh dưỡng người cao tuổi",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691514/{0}.htm"
+              },
+              {
+                "Name" : "Chế độ ăn người bệnh",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691515/{0}.htm"
+              },
+              {
+                "Name" : "Cảnh giác thực phẩm",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691516/{0}.htm"
+              },
+              {
+                "Name" : "Thực phẩm chức năng",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691517/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Khỏe - Đẹp",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691508/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Mỹ phẩm",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691509/{0}.htm"
+              },
+              {
+                "Name" : "Thẩm mỹ",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691510/{0}.htm"
+              },
+              {
+                "Name" : "Bài tập khỏe đẹp",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691511/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Phòng mạch online",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691507/{0}.htm"
+          },
+          {
+            "Name" : "Văn hóa – Giải trí",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691524/{0}.htm"
+          },
+          {
+            "Name" : "Đời sống",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691525/{0}.htm"
+          },
+          {
+            "Name" : "Dược",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691485/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "An toàn dùng thuốc",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691486/{0}.htm"
+              },
+              {
+                "Name" : "Thông tin dược học",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691487/{0}.htm"
+              },
+              {
+                "Name" : "Thuốc mới",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691488/{0}.htm"
+              },
+              {
+                "Name" : "Vaccine",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691489/{0}.htm"
+              }
+            ]
+          },
+          {
+            "Name" : "Nhịp cầu Nhân ái",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691523/{0}.htm"
+          },
+          {
+            "Name" : "Thị trường",
+            "Url" : "https://suckhoedoisong.vn/timelinelist/1691522/{0}.htm",
+            "SubCategories" : [
+              {
+                "Name" : "Nhãn hàng sai phạm",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691527/{0}.htm"
+              },
+              {
+                "Name" : "Doanh nghiệp",
+                "Url" : "https://suckhoedoisong.vn/timelinelist/1691528/{0}.htm"
+              }
+            ]
           }
         ]
       }

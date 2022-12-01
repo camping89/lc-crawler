@@ -1,4 +1,6 @@
 using System.Collections.Concurrent;
+using FluentDate;
+using FluentDateTime;
 using LC.Crawler.Client.Entities;
 using LC.Crawler.Client.Enums;
 using LC.Crawler.Core.Enums;
@@ -9,6 +11,29 @@ namespace LC.Crawler.Console.Services;
 
 public class CrawlLCArticleApiBaseService : BaseService, ICrawlLCService
 {
+    protected int GetDaysCrawlingInterval()
+    {
+        return GlobalConfig.CrawlConfig.DaysIntervalArticles;
+    }
+
+    protected int GetTotalCrawlingArticlesInterval()
+    {
+        return GlobalConfig.CrawlConfig.TotalArticles;
+    }
+
+    protected virtual async Task<bool> IsValidArticle(int totalArticle, string url, DateTime? createdAtDateTime)
+    {
+        return await Task.Factory.StartNew(() =>
+        {
+            if (GlobalConfig.CrawlConfig.ValidateArticleByDateTime)
+            {
+                return createdAtDateTime >= GetDaysCrawlingInterval().Days().Ago();
+            }
+
+            return totalArticle <= GetTotalCrawlingArticlesInterval();
+        });
+    }
+    
     public async Task<CrawlResult?> Execute(CrawlerDataSourceItem item, CrawlerCredentialEto credential)
     {
         InitLogConfig(credential);
