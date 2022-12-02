@@ -234,6 +234,136 @@
             ]
           }
         ]
+      },
+      "LongChauArticleConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Góc sức khỏe",
+            "Url" : "https://nhathuoclongchau.com/bai-viet?page={0}",
+            "SubCategories" : [
+              {
+                "Name" : "Dinh dưỡng",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Ăn ngon khỏe",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/an-ngon-khoe?page={0}"
+                  },
+                  {
+                    "Name" : "Thực phẩm dinh dưỡng",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/thuc-pham-dinh-duong?page={0}"
+                  },
+                  {
+                    "Name" : "Chế độ ăn kiêng",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/che-do-an-kieng?page={0}"
+                  }
+                ]
+              },
+              {
+                "Name" : "Phòng & chữa bệnh",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Kiến thức y khoa",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/kien-thuc-y-khoa?page={0}"
+                  },
+                  {
+                    "Name" : "Y học cổ truyền",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/y-hoc-co-truyen?page={0}"
+                  },
+                  {
+                    "Name" : "Sức khỏe gia đình",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/suc-khoe-gia-dinh?page={0}"
+                  }
+                ]
+              },
+              {
+                "Name" : "Người cao tuổi",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/nguoi-cao-tuoi?page={0}"
+              },
+              {
+                "Name" : "Khỏe đẹp",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Dưỡng da",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/duong-da?page={0}"
+                  },
+                  {
+                    "Name" : "Chăm sóc tóc",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/cham-soc-toc?page={0}"
+                  },
+                  {
+                    "Name" : "Chăm sóc cơ thể",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/cham-soc-co-the?page={0}"
+                  },
+                  {
+                    "Name" : "Mỹ phẩm",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/my-pham?page={0}"
+                  }
+                ]
+              },
+              {
+                "Name" : "Mẹ & bé",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Chăm sóc bé",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/cham-soc-be?page={0}"
+                  },
+                  {
+                    "Name" : "Kế hoạch mang thai",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/ke-hoach-mang-thai?page={0}"
+                  },
+                  {
+                    "Name" : "Mang thai",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/mang-thai?page={0}"
+                  },
+                  {
+                    "Name" : "Sinh con",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/sinh-con?page={0}"
+                  }
+                ]
+              },
+              {
+                "Name" : "Giới tính",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Đời sống tình dục",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh/doi-song-tinh-duc?page={0}"
+                  },
+                  {
+                    "Name" : "Sức khỏe sinh sản",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh/suc-khoe-sinh-san?page={0}"
+                  }
+                ]
+              },
+              {
+                "Name" : "Tin khuyến mãi",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/tin-khuyen-mai?page={0}"
+              },
+              {
+                "Name" : "Tin tức sức khỏe",
+                "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe?page={0}",
+                "SubCategories" : [
+                  {
+                    "Name" : "Tin y dược",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/tin-y-duoc?page={0}"
+                  },
+                  {
+                    "Name" : "Sự kiện",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/su-kien?page={0}"
+                  },
+                  {
+                    "Name" : "Dịch bệnh",
+                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/dich-benh?page={0}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     }
   }

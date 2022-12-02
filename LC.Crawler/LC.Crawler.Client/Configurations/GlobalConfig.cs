@@ -14,6 +14,7 @@ public class CrawlConfig
     public int TotalArticles { get; set; }
     public int DaysIntervalArticles { get; set; }
     public SucKhoeDoiSongConfig SucKhoeDoiSongConfig { get; set; }
+    public LongChauArticleConfig LongChauArticleConfig { get; set; }
 }
 
 public class GlobalConfig
@@ -22,6 +23,11 @@ public class GlobalConfig
 }
 
 public class SucKhoeDoiSongConfig
+{
+    public IList<Category> Categories { get; set; }
+}
+
+public class LongChauArticleConfig
 {
     public IList<Category> Categories { get; set; }
 }
