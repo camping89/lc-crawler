@@ -20,10 +20,15 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(string url)
     {
         var crawlArticlePayload = new ConcurrentBag<ArticlePayload>();
-        await GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories.ParallelForEachAsync(async category =>
+        // await GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories.ParallelForEachAsync(async category =>
+        // {
+        //     crawlArticlePayload.AddRange(await GetArticlesPayload(category, category.Name));
+        // });
+
+        foreach (var category in GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories)
         {
             crawlArticlePayload.AddRange(await GetArticlesPayload(category, category.Name));
-        });
+        }
         
         System.Console.WriteLine($"Total Articles {crawlArticlePayload.Count}");
         using var autoResetEvent = new AutoResetEvent(false);
@@ -149,10 +154,10 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
         var articlePayloads = new ConcurrentBag<ArticlePayload>();
         if (category.SubCategories is not null && category.SubCategories.Any())
         {
-            await category.SubCategories.ParallelForEachAsync(async subCategory =>
+            foreach (var subCategory in category.SubCategories)
             {
                 articlePayloads.AddRange(await GetArticlesPayload(subCategory, mainCategory));
-            });
+            }
         }
 
         var articlesCategory = new List<ArticlePayload>();
