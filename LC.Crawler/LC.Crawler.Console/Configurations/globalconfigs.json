@@ -15,7 +15,7 @@
       "Crawl_MaxThread" : 10,
       "Crawl_BatchSize" : 100,
       "ValidateArticleByDateTime" : false,
-      "TotalArticles" : 100,
+      "TotalArticles" : 1000000,
       "DaysIntervalArticles" : 3,
       "SucKhoeDoiSongConfig" : {
         "Categories" : [
@@ -362,6 +362,264 @@
                 ]
               }
             ]
+          }
+        ]
+      },
+      "BlogSucKhoeConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Sức Khỏe",
+            "Url" : "https://www.blogsuckhoe.com/page/{0}"
+          },
+          {
+            "Name" : "Tin Y Khoa",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/tin-y-khoa/page/{0}"
+          },
+          {
+            "Name" : "Giới Tính",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/gioi-tinh/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Lãnh Cảm",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/gioi-tinh/lanh-cam/page/{0}"
+              },
+              {
+                "Name" : "Yếu Sinh Lý",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/gioi-tinh/yeu-sinh-ly/page/{0}"
+              },
+              {
+                "Name" : "Tổ Ấm Vợ Chồng",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/gioi-tinh/tam-ly-vo-chong/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Làm Đẹp",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Chăm Sóc Da",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/cham-soc-da/page/{0}"
+              },
+              {
+                "Name" : "Chống Lão Hóa",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/chong-lao-hoa/page/{0}"
+              },
+              {
+                "Name" : "Thẩm Mỹ",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/tham-my/page/{0}"
+              },
+              {
+                "Name" : "Khỏe Đẹp",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/khoe-dep/page/{0}"
+              },
+              {
+                "Name" : "Thể Dục Yoga",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/lam-dep/the-duc-yoga/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Dinh Dưỡng",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/dinh-duong/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Chế Độ Ăn Uống",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/dinh-duong/che-do-an-uong/page/{0}"
+              },
+              {
+                "Name" : "Món Ăn Bài Thuốc",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/dinh-duong/mon-an-bai-thuoc/page/{0}"
+              },
+              {
+                "Name" : "An Toàn Thực Phẩm",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/dinh-duong/an-toan-thuc-pham/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Mẹo Vặt",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/meo-vat/page/{0}"
+          },
+          {
+            "Name" : "Thuốc & Sức Khỏe",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/thuoc-va-suc-khoe/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Cây Thuốc Quý",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/thuoc-va-suc-khoe/cay-thuoc-quy/page/{0}"
+              },
+              {
+                "Name" : "Thuốc Đông Y",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/thuoc-va-suc-khoe/thuoc-dong-y/page/{0}"
+              },
+              {
+                "Name" : "Thuốc Tây Y",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/thuoc-va-suc-khoe/thuoc-tay-y/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Chuyên Đề",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Bệnh AIDS / HIV",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/benh-aids-hiv/page/{0}"
+              },
+              {
+                "Name" : "Bệnh Nghề Nghiệp",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/benh-nghe-nghiep/page/{0}"
+              },
+              {
+                "Name" : "Biến Chứng Các Bệnh",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/bien-chung-cac-benh/page/{0}"
+              },
+              {
+                "Name" : "Oxi Cao Áp",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/oxi-cao-ap/page/{0}"
+              },
+              {
+                "Name" : "Đông Y",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/dong-y/page/{0}"
+              },
+              {
+                "Name" : "Khoáng Chất Vitamin",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/khoang-chat-vitamin/page/{0}"
+              },
+              {
+                "Name" : "Giải Phẩu Thẩm Mỹ",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/giai-phau-tham-my/page/{0}"
+              },
+              {
+                "Name" : "Giảm Cân / Giảm Béo",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/giam-can-giam-beo/page/{0}"
+              },
+              {
+                "Name" : "Tiêm Chủng",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/tiem-chung/page/{0}"
+              },
+              {
+                "Name" : "Vật Lý Trị Liệu",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/vat-ly-tri-lieu/page/{0}"
+              },
+              {
+                "Name" : "Tình Huống Khẩn Cấp",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/tinh-huong-khan-cap/page/{0}"
+              },
+              {
+                "Name" : "Điều Trị Không Thuốc",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/chuyen-de/dieu-tri-khong-dung-thuoc/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Mẹ Tròn Con Vuông",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/me-tron-con-vuong/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Chuẩn Bị Mang Thai",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/me-tron-con-vuong/chuan-bi-mang-thai/page/{0}"
+              },
+              {
+                "Name" : "Bầu Bì",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/me-tron-con-vuong/bau-bi/page/{0}"
+              },
+              {
+                "Name" : "Sau Khi Sinh",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/me-tron-con-vuong/sau-khi-sinh/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Sức Khỏe Trẻ Em",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-tre-em/page/{0}",
+            "SubCategories" : [
+              {
+                "Name" : "Nhi Khoa",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-tre-em/nhi-khoa/page/{0}"
+              },
+              {
+                "Name" : "Nuôi Con Cao Khỏe",
+                "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-tre-em/nuoi-con-cao-khoe/page/{0}"
+              }
+            ]
+          },
+          {
+            "Name" : "Sức Khỏe Phụ Nữ",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-phu-nu/page/{0}"
+          },
+          {
+            "Name" : "Sức Khỏe Nam Giới",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-nam-gioi/page/{0}"
+          },
+          {
+            "Name" : "Sức Khỏe Người Già",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/suc-khoe-nguoi-gia/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Thường Gặp",
+            "Url" : "https://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Bệnh Di Truyền",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/benh-di-truyen/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Bệnh Truyền Nhiễm",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/benh-truyen-nhiem/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Bệnh Tuổi Teen",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/benh-tuoi-teen/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Bệnh Văn Phòng",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/benh-van-phong/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Bệnh Về Mắt",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/benh-ve-mat/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Béo Phì - Thiếu Cân",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/beo-phi-thieu-can/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Cơ - Xương - Gout",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/co-xuong-gout/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Da Liễu - Dị Ứng",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/da-lieu-di-ung/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Hô Hấp - Cảm Cúm",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/ho-hap-cam-cum/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Huyết Học",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/huyet-hoc/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Nội Thần Kinh Đột Quỵ",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/noi-than-kinh-dot-quy/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Răng - Hàm - Mặt",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/rang-ham-mat/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Tai - Mũi - Họng",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/tai-mui-hong/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Tâm Thần - Trẻ Tự Kỷ",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/tam-than-tre-tu-ky/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Phổ Biến -> Thận - Tiết Niệu",
+            "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/than-tiet-nieu/page/{0}"
           }
         ]
       }

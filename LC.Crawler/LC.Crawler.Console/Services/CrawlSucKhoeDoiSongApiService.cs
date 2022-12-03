@@ -74,7 +74,11 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                 if (ele_RelatedBoxNews is not null)
                 {
                     var relatedBoxNews = ele_RelatedBoxNews.InnerHtml;
-                    content = content.Replace(relatedBoxNews, string.Empty);
+                    if (relatedBoxNews.IsNotNullOrWhiteSpace())
+                    {
+                        content = content.SafeReplace(relatedBoxNews, string.Empty);
+                    }
+                    
                 }
 
                 // remove related one news
@@ -84,7 +88,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     foreach (var ele_RelatedOneNew in ele_RelatedOneNews)
                     {
                         var relatedOneNew = ele_RelatedOneNew.InnerHtml;
-                        content = content.Replace(relatedOneNew, string.Empty);
+                        content = content.SafeReplace(relatedOneNew, string.Empty);
                     }
                 }
 
@@ -96,7 +100,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     if (ele_Ads is not null)
                     {
                         var ads = ele_Ads.InnerHtml;
-                        content = content.Replace(ads, string.Empty);
+                        content = content.SafeReplace(ads, string.Empty);
                     }
                 }
 
@@ -107,7 +111,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     foreach (var elementHandle in ele_ReadMores)
                     {
                         var readMore = elementHandle.InnerHtml;
-                        content = content.Replace(readMore, string.Empty);
+                        content = content.SafeReplace(readMore, string.Empty);
                     }
                 }
 
@@ -118,7 +122,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     foreach (var elementHandle in ele_Videos)
                     {
                         var video = elementHandle.InnerHtml;
-                        content = content.Replace(video, string.Empty);
+                        content = content.SafeReplace(video, string.Empty);
                     }
                 }
 
@@ -224,7 +228,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                             ShortDescription = description
                         };
 
-                        System.Console.WriteLine($"Category {articlePayload.Category} - Article Url {articlePayload.Url}");
+                        System.Console.WriteLine($"Category {articlePayload.Category} - {requestUrl} - Article Url {articlePayload.Url}");
 
                         articlesCategory.Add(articlePayload);
                     }
@@ -234,8 +238,10 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                         break;
                     }
                 }
-
-                pageNumber += 1;
+                else
+                {
+                    System.Console.WriteLine("Test");
+                }
             }
             catch (Exception e)
             {

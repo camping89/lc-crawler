@@ -789,6 +789,11 @@ public static class StringExtensions
             if (value == null)
                 return null;
 
+            if (oldValue.IsNullOrEmpty())
+            {
+                return value;
+            }
+
             return value.Replace(oldValue, newValue);
         }
 
