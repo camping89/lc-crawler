@@ -20,16 +20,11 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(string url)
     {
         var crawlArticlePayload = new ConcurrentBag<ArticlePayload>();
-        // await GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories.ParallelForEachAsync(async category =>
-        // {
-        //     crawlArticlePayload.AddRange(await GetArticlesPayload(category, category.Name));
-        // });
-
-        foreach (var category in GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories)
+        await GlobalConfig.CrawlConfig.SucKhoeDoiSongConfig.Categories.ParallelForEachAsync(async category =>
         {
             crawlArticlePayload.AddRange(await GetArticlesPayload(category, category.Name));
-        }
-        
+        });
+
         System.Console.WriteLine($"Total Articles {crawlArticlePayload.Count}");
         using var autoResetEvent = new AutoResetEvent(false);
         autoResetEvent.WaitOne(5000);
@@ -65,6 +60,39 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
 
                 var doc = new HtmlDocument();
                 doc.LoadHtml(htmlString);
+
+                var currentCategory = articlePayload.Category;
+                articlePayload.Category = string.Empty;
+                var ele_ParentCate = doc.DocumentNode.SelectSingleNode("//div[contains(@class,'box-breadcrumb-name')]");
+                if (ele_ParentCate is not null)
+                {
+                    var textInfo   = new CultureInfo("en-US", false).TextInfo;
+                    var parentCate = textInfo.ToTitleCase(ele_ParentCate.InnerText.ToLower()); 
+                    articlePayload.Category = parentCate.Replace("\r\n", string.Empty).Trim();
+                }
+
+                var ele_ChildCate = doc.DocumentNode.SelectSingleNode("//div[contains(@class,'box-breadcrumb-sub')]/a[@class='active']");
+                if (ele_ChildCate is not null)
+                {
+                    if (articlePayload.Category.IsNotNullOrEmpty())
+                    {
+                        articlePayload.Category += " -> ";
+                    }
+                
+                    articlePayload.Category += ele_ChildCate.InnerText.Replace("\r\n", string.Empty).Trim();
+                }
+
+                if (articlePayload.Category.IsNullOrWhiteSpace())
+                {
+                    articlePayload.Category = currentCategory;
+                }
+            
+                var ele_ShortDescription = doc.DocumentNode.SelectSingleNode("//h2[@data-role='sapo']");
+                if (ele_ShortDescription is not null)
+                {
+                    var shortDescription = ele_ShortDescription.InnerText;
+                    articlePayload.ShortDescription = shortDescription.RemoveHrefFromA();
+                }
 
                 var contentNode = doc.DocumentNode.SelectSingleNode("//div[contains(@class, 'detail-content')]");
                 var content = contentNode.InnerHtml;
@@ -140,7 +168,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     }
                 }
 
-                System.Console.WriteLine(JsonConvert.SerializeObject(articlePayload));
+                System.Console.WriteLine($"{articlePayload.Category} - {articlePayload.Url}");
                 
                 articles.Add(articlePayload);
             }
@@ -158,10 +186,10 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
         var articlePayloads = new ConcurrentBag<ArticlePayload>();
         if (category.SubCategories is not null && category.SubCategories.Any())
         {
-            foreach (var subCategory in category.SubCategories)
+            await category.SubCategories.ParallelForEachAsync(async subCategory =>
             {
                 articlePayloads.AddRange(await GetArticlesPayload(subCategory, mainCategory));
-            }
+            });
         }
 
         var articlesCategory = new List<ArticlePayload>();
@@ -199,12 +227,12 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                         var imgNode = articleDoc.DocumentNode.SelectSingleNode("//img");
                         var imgUrl = imgNode.Attributes["src"].Value;
 
-                        var categoryNode = articleDoc.DocumentNode.SelectSingleNode("//a[@class='box-category-category']");
-                        var categoryName = categoryNode.Attributes["title"].Value.Trim();
-                        if (mainCategory.ToUpper() != categoryName.ToUpper())
-                        {
-                            categoryName = $"{mainCategory} -> {categoryName}";
-                        }
+                        // var categoryNode = articleDoc.DocumentNode.SelectSingleNode("//a[@class='box-category-category']");
+                        // var categoryName = categoryNode.Attributes["title"].Value.Trim();
+                        // if (mainCategory.ToUpper() != categoryName.ToUpper())
+                        // {
+                        //     categoryName = $"{mainCategory} -> {categoryName}";
+                        // }
 
                         var dateTimeNode = articleDoc.DocumentNode.SelectSingleNode("//span[contains(@class,'time-ago')]");
                         var dateTimeString = dateTimeNode.InnerText;
@@ -220,7 +248,7 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
 
                         var articlePayload = new ArticlePayload
                         {
-                            Category = categoryName,
+                            Category = mainCategory,
                             Title = title,
                             Url = articleUrl,
                             CreatedAt = dateTime,
