@@ -15,7 +15,7 @@
       "Crawl_MaxThread" : 10,
       "Crawl_BatchSize" : 100,
       "ValidateArticleByDateTime" : false,
-      "TotalArticles" : 1000000,
+      "TotalArticles" : 100,
       "DaysIntervalArticles" : 3,
       "SucKhoeDoiSongConfig" : {
         "Categories" : [
@@ -620,6 +620,106 @@
           {
             "Name" : "Bệnh Phổ Biến -> Thận - Tiết Niệu",
             "Url" : "http://www.blogsuckhoe.com/chuyen-muc/benh-thuong-gap/than-tiet-nieu/page/{0}"
+          }
+        ]
+      },
+      "SongKhoeMedPlusConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Cơ sở Y tế -> Bệnh viện",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/co-so-y-te/benh-vien/page/{0}/"
+          },
+          {
+            "Name" : "Cơ sở Y tế -> Phòng khám",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/co-so-y-te/phong-kham/page/{0}/"
+          },
+          {
+            "Name" : "Chuyên gia Y tế -> Bác sĩ",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/chuyen-gia-y-te/bac-si/page/{0}/"
+          },
+          {
+            "Name" : "Chuyên gia Y tế -> Lương y",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/chuyen-gia-y-te/luong-y/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Cẩm nang bầu khoẻ- đẹp",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/cam-nang-bau-khoe-dep/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Chăm sóc sau sinh",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/cham-soc-sau-sinh/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Chuẩn bị mang thai",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/chuan-bi-mang-thai/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Dinh dưỡng thai kỳ",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/dinh-duong-thai-ky/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Kiến thức thai kỳ",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/kien-thuc-thai-ky/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Quá trình sinh nở",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/qua-trinh-sinh-no/page/{0}/"
+          },
+          {
+            "Name" : "Mang thai -> Thai nhi theo tuần",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/thai-nhi-theo-tuan/page/{0}/"
+          },
+          {
+            "Name" : "TMang thai -> iện ích",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/mang-thai/tien-ich/page/{0}/"
+          },
+          {
+            "Name" : "Nuôi dạy con -> Kỹ năng nuôi con",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/nuoi-day-con/ky-nang-nuoi-con/page/{0}/"
+          },
+          {
+            "Name" : "Nuôi dạy con -> Phương pháp dạy con",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/nuoi-day-con/phuong-phap-day-con/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Bệnh A-Z",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/benh-a-z/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Cẩm nang sức khoẻ",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/cam-nang-suc-khoe/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Đời sống",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/doi-song/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Luyện tập",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/luyen-tap/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Phòng ngừa bệnh",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/phuong-phap-phong-ngua-benh/page/{0}/"
+          },
+          {
+            "Name" : "Sức khỏe -> Tế bào gốc",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/suc-khoe/te-bao-goc/page/{0}/"
+          },
+          {
+            "Name" : "Dinh dưỡng -> Cách làm món ăn",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/dinh-duong/cach-lam-mon-an/page/{0}/"
+          },
+          {
+            "Name" : "Dinh dưỡng -> Nguyên liệu ăn uống",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/dinh-duong/nguyen-lieu-an-uong/page/{0}/"
+          },
+          {
+            "Name" : "Dinh dưỡng -> Thành phần thực phẩm",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/dinh-duong/thanh-phan-thuc-pham/page/{0}/"
+          },
+          {
+            "Name" : "Dinh dưỡng -> Thông tin dinh dưỡng",
+            "Url" : "https://songkhoe.medplus.vn/chuyen-muc/dinh-duong/thong-tin-dinh-duong/page/{0}/"
           }
         ]
       }
