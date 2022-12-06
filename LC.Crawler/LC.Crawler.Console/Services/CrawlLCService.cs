@@ -101,7 +101,7 @@ public class CrawlLCService : ITransientDependency
         {
             return new List<ICrawlLCService>
             {
-                new CrawlSucKhoeMedPlusService()
+                new CrawlSongKhoeMedPlusService()
             };
         }
 

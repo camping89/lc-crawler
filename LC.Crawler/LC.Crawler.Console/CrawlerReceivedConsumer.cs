@@ -180,7 +180,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlSucKhoeMedPlusService()
+                new CrawlSongKhoeMedPlusService()
             };
         }
 

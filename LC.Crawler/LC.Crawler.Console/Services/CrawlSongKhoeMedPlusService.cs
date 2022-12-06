@@ -10,7 +10,7 @@ using Microsoft.Playwright;
 
 namespace LC.Crawler.Console.Services;
 
-public class CrawlSucKhoeMedPlusService : CrawlLCArticleBaseService
+public class CrawlSongKhoeMedPlusService : CrawlLCArticleBaseService
 {
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(IPage page, string url)
     {
