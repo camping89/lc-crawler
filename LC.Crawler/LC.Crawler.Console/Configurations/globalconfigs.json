@@ -722,6 +722,74 @@
             "Url" : "https://songkhoe.medplus.vn/chuyen-muc/dinh-duong/thong-tin-dinh-duong/page/{0}/"
           }
         ]
+      },
+      "SieuThiSongKhoeConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Chưa được phân loại",
+            "Url" : "https://sieuthisongkhoe.com/category/khong-phan-loai/page/{0}"
+          },
+          {
+            "Name" : "Tin Tức",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/page/{0}"
+          },
+          {
+            "Name" : "Thông Tin Thảo Dược",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/thong-tin-thao-duoc/page/{0}"
+          },
+          {
+            "Name" : "Vạn Xuân Đường",
+            "Url" : "https://sieuthisongkhoe.com/category/sieu-thi-song-khoe/van-xuan-duong/page/{0}"
+          },
+          {
+            "Name" : "Siêu Thị Sống Khỏe",
+            "Url" : "https://sieuthisongkhoe.com/category/sieu-thi-song-khoe/page/{0}"
+          },
+          {
+            "Name" : "Tăng Cân Kentamax",
+            "Url" : "https://sieuthisongkhoe.com/category/sieu-thi-song-khoe/thuoc-tang-can-kentamax/page/{0}"
+          },
+          {
+            "Name" : "Chùm ngây trị nám Melast",
+            "Url" : "https://sieuthisongkhoe.com/category/sieu-thi-song-khoe/chum-ngay-tri-nam-melast/page/{0}"
+          },
+          {
+            "Name" : "Phản hồi khách hàng",
+            "Url" : "https://sieuthisongkhoe.com/category/sieu-thi-song-khoe/phan-hoi-cua-khach-hang/page/{0}"
+          },
+          {
+            "Name" : "Tin Tức Hoạt Động",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/hoat-dong/page/{0}"
+          },
+          {
+            "Name" : "Hôi Miệng",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-suc-khoe/san-pham-tri-hoi-mieng/page/{0}"
+          },
+          {
+            "Name" : "Tuyển Dụng",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/tuyen-dung/page/{0}"
+          },
+          {
+            "Name" : "Khuyến Mãi",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/khuyen-mai/page/{0}"
+          },
+          {
+            "Name" : "Thông Tin Bác Sĩ/ Lương Y",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-tuc/tin-tuc-luong-y/page/{0}"
+          },
+          {
+            "Name" : "Tin Sức Khoẻ",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-suc-khoe/page/{0}"
+          },
+          {
+            "Name" : "Bệnh Về Da",
+            "Url" : "https://sieuthisongkhoe.com/category/tin-suc-khoe/benh-ve-da/page/{0}"
+          },
+          {
+            "Name" : "Review Sản Phẩm",
+            "Url" : "https://sieuthisongkhoe.com/category/review-san-pham/page/{0}"
+          }
+        ]
       }
     }
   }

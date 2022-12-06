@@ -8,10 +8,9 @@ using LC.Crawler.Client.Configurations;
 using LC.Crawler.Client.Entities;
 using LC.Crawler.Core.Extensions;
 using LC.Crawler.Core.Helpers;
-using Newtonsoft.Json;
 using RestSharp;
 
-namespace LC.Crawler.Console.Services;
+namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
 {
@@ -265,10 +264,6 @@ public class CrawlSucKhoeDoiSongApiService : CrawlLCArticleApiBaseService
                     {
                         break;
                     }
-                }
-                else
-                {
-                    System.Console.WriteLine("Test");
                 }
             }
             catch (Exception e)

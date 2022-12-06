@@ -10,7 +10,7 @@ using LC.Crawler.Core.Helpers;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace LC.Crawler.Console.Services;
+namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
 {

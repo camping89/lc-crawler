@@ -8,7 +8,7 @@ using LC.Crawler.Core.Extensions;
 using LC.Crawler.Core.Helpers;
 using RestSharp;
 
-namespace LC.Crawler.Console.Services;
+namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlBlogSucKhoeApiService : CrawlLCArticleApiBaseService
 {

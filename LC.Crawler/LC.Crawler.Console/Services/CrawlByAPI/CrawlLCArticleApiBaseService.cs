@@ -7,7 +7,7 @@ using LC.Crawler.Core.Enums;
 using LC.Crawler.Core.Extensions;
 using LC.Crawler.Core.Helpers;
 
-namespace LC.Crawler.Console.Services;
+namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlLCArticleApiBaseService : BaseService, ICrawlLCService
 {
