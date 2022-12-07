@@ -237,7 +237,7 @@ public class CrawlSucKhoeGiaDinhService : CrawlLCArticleBaseService
         var timeAt = DateTime.Parse($"{createdAtStr.Split("|")[0].Trim()}");
         var dateAt = DateTime.ParseExact($"{createdAtStr.Split("|")[1].Trim()}", "dd/MM/yyyy", CultureInfo.CurrentCulture);
 
-        var createdAt = dateAt + timeAt.TimeOfDay;
+        var createdAt = dateAt.Add(timeAt.TimeOfDay);
         return createdAt;
     }
 

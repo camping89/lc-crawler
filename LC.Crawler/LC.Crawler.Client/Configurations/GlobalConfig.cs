@@ -18,6 +18,7 @@ public class CrawlConfig
     public BlogSucKhoeConfig BlogSucKhoeConfig { get; set; }
     public SongKhoeMedPlusConfig SongKhoeMedPlusConfig { get; set; }
     public SieuThiSongKhoeConfig SieuThiSongKhoeConfig { get; set; }
+    public SucKhoeGiaDinhConfig SucKhoeGiaDinhConfig { get; set; }
 }
 
 public class GlobalConfig
@@ -46,6 +47,11 @@ public class SongKhoeMedPlusConfig
 }
 
 public class SieuThiSongKhoeConfig
+{
+    public IList<Category> Categories { get; set; }
+}
+
+public class SucKhoeGiaDinhConfig
 {
     public IList<Category> Categories { get; set; }
 }

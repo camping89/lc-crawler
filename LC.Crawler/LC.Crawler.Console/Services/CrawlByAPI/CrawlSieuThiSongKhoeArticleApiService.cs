@@ -164,60 +164,6 @@ public class CrawlSieuThiSongKhoeArticleApiService : CrawlLCArticleApiBaseServic
         return categories.Any(_ => _ == "Sản Phẩm");
     }
     
-    // protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(string url)
-    // {
-    //     var crawlArticlePayload = new ConcurrentBag<ArticlePayload>();
-    //     foreach (var category in GlobalConfig.CrawlConfig.SieuThiSongKhoeConfig.Categories)
-    //     {
-    //         crawlArticlePayload.AddRange(await GetArticlesPayload(category));
-    //     }
-    //
-    //     System.Console.WriteLine($"Total Articles {crawlArticlePayload.Count}");
-    //     using var autoResetEvent = new AutoResetEvent(false);
-    //     autoResetEvent.WaitOne(5000);
-    //
-    //     return new CrawlArticlePayload
-    //     {
-    //         Url = url,
-    //         ArticlesPayload = crawlArticlePayload.ToList()
-    //     };
-    // }
-    //
-    // private async Task<List<ArticlePayload>> GetArticlesPayload(Category category)
-    // {
-    //     var articlesCategory = new List<ArticlePayload>();
-    //     
-    //     string htmlString = string.Empty;
-    //     var pageNumber = 1;
-    //     bool isValidArticle = true;
-    //
-    //     do
-    //     {
-    //         try
-    //         {
-    //             var requestUrl = string.Format(category.Url, pageNumber);
-    //             htmlString = await GetRawData(requestUrl);
-    //
-    //             if (htmlString.IsNotNullOrWhiteSpace())
-    //             {
-    //                 var doc = new HtmlDocument();
-    //                 doc.LoadHtml(htmlString);
-    //             }
-    //
-    //         }
-    //         catch (Exception e)
-    //         {
-    //             await e.Log(string.Empty, string.Empty);
-    //         }
-    //         finally
-    //         {
-    //             pageNumber += 1;
-    //         }
-    //     } while (htmlString.IsNotNullOrWhiteSpace());
-    //
-    //     return articlesCategory;
-    // }
-    
     private async Task<string> GetRawData(string url)
     {
         var client = new RestClient(url);

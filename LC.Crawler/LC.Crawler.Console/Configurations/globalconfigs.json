@@ -790,6 +790,54 @@
             "Url" : "https://sieuthisongkhoe.com/category/review-san-pham/page/{0}"
           }
         ]
+      },
+      "SucKhoeGiaDinhConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Khỏe +",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/667/667/undefined"
+          },
+          {
+            "Name" : "Thuốc và sức khỏe",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/668/668/undefined"
+          },
+          {
+            "Name" : "Dinh dưỡng",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/673/673/undefined"
+          },
+          {
+            "Name" : "Làm đẹp",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/670/670/undefined"
+          },
+          {
+            "Name" : "Gia đình khỏe",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/671/671/undefined"
+          },
+          {
+            "Name" : "Sống tâm lý",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/669/669/undefined"
+          },
+          {
+            "Name" : "Cho con",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/674/674/undefined"
+          },
+          {
+            "Name" : "Giảm béo",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/672/672/undefined"
+          },
+          {
+            "Name" : "Video",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/675/675/undefined"
+          },
+          {
+            "Name" : "Trải nghiệm",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/683/683/undefined"
+          },
+          {
+            "Name" : "Bác sĩ",
+            "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/685/685/undefined"
+          }
+        ]
       }
     }
   }
