@@ -17,12 +17,12 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(IPage page, string url)
     {
-        var articlePayloads = await GetArticleLinks(url);
-        await GetMainArticleLinks(url, articlePayloads);
+        // var articlePayloads = await GetArticleLinks(url);
+        // await GetMainArticleLinks(url, articlePayloads);
 
         return new CrawlArticlePayload
         {
-            ArticlesPayload = articlePayloads,
+            ArticlesPayload = new List<ArticlePayload>(),
             Url = url
         };
     }
@@ -88,11 +88,11 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
     protected override async Task<ConcurrentBag<ArticlePayload>> GetArticlePayload(CrawlArticlePayload crawlArticlePayload)
     {
         var lcArticles = new ConcurrentBag<ArticlePayload>();
-        await crawlArticlePayload.ArticlesPayload.Partition(GlobalConfig.CrawlConfig.Crawl_BatchSize).ParallelForEachAsync(async articlePayloadBatch =>
-        {
-            var articles = await CrawlLCArticles(articlePayloadBatch.ToList());
-            lcArticles.AddRange(articles);
-        }, GlobalConfig.CrawlConfig.Crawl_MaxThread);
+        // await crawlArticlePayload.ArticlesPayload.Partition(GlobalConfig.CrawlConfig.Crawl_BatchSize).ParallelForEachAsync(async articlePayloadBatch =>
+        // {
+        //     var articles = await CrawlLCArticles(articlePayloadBatch.ToList());
+        //     lcArticles.AddRange(articles);
+        // }, GlobalConfig.CrawlConfig.Crawl_MaxThread);
 
         var articleDisease = await CrawlDisease(crawlArticlePayload.Url);
 

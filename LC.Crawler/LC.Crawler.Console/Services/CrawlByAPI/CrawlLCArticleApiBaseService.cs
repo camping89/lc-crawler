@@ -74,7 +74,10 @@ public class CrawlLCArticleApiBaseService : BaseService, ICrawlLCService
     
     protected virtual async Task<CrawlArticlePayload> GetCrawlArticlePayload(string url)
     {
-        return await Task.Factory.StartNew(() => new CrawlArticlePayload());
+        return await Task.Factory.StartNew(() => new CrawlArticlePayload
+        {
+            Url = url
+        });
     }
     
     protected virtual async Task<ConcurrentBag<ArticlePayload>> GetArticlePayload(CrawlArticlePayload crawlArticlePayload)

@@ -838,6 +838,22 @@
             "Url" : "https://suckhoegiadinh.com.vn/Category/getNextItemSubjectLatest/{0}/685/685/undefined"
           }
         ]
+      },
+      "AladinConfig" : {
+        "Categories" : [
+          {
+            "Name" : "Tin khuyến mãi",
+            "Url" : "https://aladin.com.vn/tin-tuc/tin-khuyen-mai/?page={0}"
+          },
+          {
+            "Name" : "Giải pháp chăm sóc",
+            "Url" : "https://aladin.com.vn/tin-tuc/giai-phap-cham-soc/?page={0}"
+          },
+          {
+            "Name" : "Chống lão hóa",
+            "Url" : "https://aladin.com.vn/tin-tuc/chong-lao-hoa/?page={0}"
+          }
+        ]
       }
     }
   }

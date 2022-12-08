@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Globalization;
 using System.Web;
 using Dasync.Collections;
@@ -159,8 +160,8 @@ public class CrawlSucKhoeGiaDinhApiService : CrawlLCArticleApiBaseService
                             var url = ele_Url.Attributes["href"].Value;
                             url = Url.Combine(mainUrl, url);
 
-                            var title = ele_Url.Attributes["title"].Value;
-
+                            var title = ele_Url.InnerText.Trim('\r').Trim('\n').Trim();
+                            
                             var ele_Image = articleDoc.DocumentNode.SelectSingleNode("//div[@class='thumb-art']/a/img");
                             var imageUrl = ele_Image.Attributes["src"].Value;
                             

@@ -2,6 +2,7 @@
 using LC.Crawler.Client.Entities;
 using LC.Crawler.Client.Enums;
 using LC.Crawler.Console.Services;
+using LC.Crawler.Console.Services.CrawlByAPI;
 using LC.Crawler.Core.Enums;
 using LC.Crawler.Core.Helpers;
 using log4net;
@@ -122,7 +123,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
             return new List<ICrawlLCService>
             {
                 new CrawlSieuThiSongKhoeService(),
-                new CrawlSieuThiSongKhoeArticleService()
+                new CrawlSieuThiSongKhoeArticleApiService()
             };
         }
 
@@ -139,7 +140,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlSucKhoeDoiSongService()
+                new CrawlSucKhoeDoiSongApiService()
             };
         }
 
@@ -148,6 +149,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
             return new List<ICrawlLCService>
             {
                 new CrawlLongChauArticleService(),
+                new CrawlLongChauArticleApiService(),
                 new CrawlLongChauService()
             };
         }
@@ -164,7 +166,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlBlogSucKhoeService()
+                new CrawlBlogSucKhoeApiService()
             };
         }
 
@@ -172,7 +174,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlSucKhoeGiaDinhService()
+                new CrawlSucKhoeGiaDinhApiService()
             };
         }
 
@@ -180,7 +182,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlSongKhoeMedPlusService()
+                new CrawlSongKhoeMedPlusApiService()
             };
         }
 
