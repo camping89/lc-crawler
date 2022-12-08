@@ -20,7 +20,7 @@ public class CrawlConfig
     public SieuThiSongKhoeConfig SieuThiSongKhoeConfig { get; set; }
     public SucKhoeGiaDinhConfig SucKhoeGiaDinhConfig { get; set; }
     public AladinConfig AladinConfig { get; set; }
-    public SiteConfig AlobacsiConfig { get; set; }
+    public AlobacsiConfig AlobacsiConfig { get; set; }
 }
 
 public class GlobalConfig
@@ -28,7 +28,12 @@ public class GlobalConfig
     public CrawlConfig CrawlConfig { get; set; }
 }
 
-public class SiteConfig
+public class SucKhoeDoiSongConfig
+{
+    public IList<Category> Categories { get; set; }
+}
+
+public class AlobacsiConfig
 {
     public IList<Category> Categories { get; set; }
 }

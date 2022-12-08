@@ -131,7 +131,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlAladinArticleService(),
+                new CrawlAladinArticleApiService(),
                 new CrawlAladinService()
             };
         }
@@ -158,7 +158,7 @@ public class CrawlerReceivedConsumer : IDistributedEventHandler<CrawlerDataSourc
         {
             return new List<ICrawlLCService>
             {
-                new CrawlAloBacSiService()
+                new CrawlAloBacSiApiService()
             };
         }
 

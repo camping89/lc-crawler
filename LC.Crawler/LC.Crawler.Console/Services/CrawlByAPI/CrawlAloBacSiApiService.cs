@@ -2,7 +2,6 @@ using System.Collections.Concurrent;
 using System.Globalization;
 using System.Web;
 using Dasync.Collections;
-using Flurl;
 using HtmlAgilityPack;
 using LC.Crawler.Client.Configurations;
 using LC.Crawler.Client.Entities;
@@ -11,7 +10,7 @@ using LC.Crawler.Core.Helpers;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace LC.Crawler.Console.Services;
+namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlAloBacSiApiService : CrawlLCArticleApiBaseService
 {
