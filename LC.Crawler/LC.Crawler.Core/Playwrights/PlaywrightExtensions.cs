@@ -156,7 +156,7 @@ namespace LC.Crawler.Core.Playwrights
 
     public static class PlaywrightHelper
     {
-        private const string ExtensionPath = @"%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions\cfhdojbkjhnklbpkdaibdccddilifddb\3.14.2_0";
+        private const string ExtensionPath = @"%LOCALAPPDATA%\Google\Chrome\User Data\Default\Extensions\cfhdojbkjhnklbpkdaibdccddilifddb";
 
         private static readonly List<string> AdsRegex = new()
         {
@@ -175,6 +175,8 @@ namespace LC.Crawler.Core.Playwrights
              bool headless = true)
         {
             CreateTempFolder();
+            var loadExtensionPath = Environment.ExpandEnvironmentVariables(ExtensionPath);
+            loadExtensionPath = Directory.GetDirectories(loadExtensionPath).First();
             var browserTypeLaunchOptions = new BrowserTypeLaunchOptions
             {
                 Channel = "chrome",
@@ -194,7 +196,7 @@ namespace LC.Crawler.Core.Playwrights
                     "--log-level=3",
                     "--disable-notifications",
                     "--unhandled-rejections=strict",
-                    $"--load-extension={Environment.ExpandEnvironmentVariables(ExtensionPath)}"
+                    $"--load-extension={loadExtensionPath}"
                 },
                 IgnoreDefaultArgs = new List<string>
                 {

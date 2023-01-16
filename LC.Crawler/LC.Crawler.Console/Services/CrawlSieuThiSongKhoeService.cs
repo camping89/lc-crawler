@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using Dasync.Collections;
+using Flurl;
 using LC.Crawler.Client.Entities;
 using LC.Crawler.Client.Enums;
 using LC.Crawler.Console.Services.Helper;
@@ -91,7 +92,7 @@ public class CrawlSieuThiSongKhoeService : CrawlLCEcommerceBaseService
 
             while (true)
             {
-                await page.GotoAsync($"{categoryUrl}/page/{pageNumber}");
+                await page.GotoAsync(Url.Combine(categoryUrl, "page", pageNumber.ToString()));
                 System.Console.WriteLine($"CRAWL CHECKING PAGE: {pageNumber}");
 
                 var ele_Products = await page.QuerySelectorAllAsync("//main[@id='main']//a[contains(@class,'product')]");
