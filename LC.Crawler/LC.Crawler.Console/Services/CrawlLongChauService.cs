@@ -18,10 +18,10 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     private const string LongChauUrl = "https://nhathuoclongchau.com/";
 
     // Example: https://nhathuoclongchau.com/filter/comments?productId=20580&type=desc&page=2
-    private const string LoadCommentApi = "https://nhathuoclongchau.com/filter/";
+    private const string LoadCommentApi = "comments?productId";
 
     // Example https://nhathuoclongchau.com/load-more-reply?id=54038&type=comment&page=2
-    private const string LoadMoreReplyApi = "https://nhathuoclongchau.com/load-more-reply";
+    private const string LoadMoreReplyApi = "load-more-reply";
     private const string BrandThuocUrl = "https://nhathuoclongchau.com/thuoc";
     private const string BrandThuocName = "thuoc";
 
@@ -258,22 +258,23 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
             if (ele_ReviewViewMore is null) break;
             if (await ele_ReviewViewMore.IsEnabledAsync())
             {
-                await ele_ReviewViewMore.Click();
+                try
+                {
+                    System.Console.WriteLine($"---------------Click Review View More-----------------");
+                    await page.RunAndWaitForResponseAsync(async () =>
+                    {
+                        await ele_ReviewViewMore.Click();
+                    }, response => response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 3000});
+                }
+                catch (Exception e)
+                {
+                    await e.Log(string.Empty, string.Empty);
+                    break;
+                }
             }
             else
             {
                 break;
-            }
-
-            System.Console.WriteLine($"---------------Click Review View More-----------------");
-            try
-            {
-                await page.WaitForResponseAsync(response =>
-                    response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageWaitForResponseOptions {Timeout = 3000});
-            }
-            catch (Exception e)
-            {
-                await e.Log(string.Empty, string.Empty);
             }
         }
 
@@ -283,18 +284,19 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         {
             if (await item.IsEnabledAsync())
             {
-                await item.Click();
-            }
-
-            try
-            {
-                System.Console.WriteLine($"---------------Click Reply View More-----------------");
-                await page.WaitForResponseAsync(response =>
-                    response.Url.Contains(LoadMoreReplyApi) && response.Status == 200, new PageWaitForResponseOptions {Timeout = 3000});
-            }
-            catch (Exception e)
-            {
-                await e.Log(string.Empty, string.Empty);
+                try
+                {
+                    System.Console.WriteLine($"---------------Click Reply View More-----------------");
+                    await page.RunAndWaitForResponseAsync(async () =>
+                    {
+                        await item.Click();
+                    }, response => response.Url.Contains(LoadMoreReplyApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 3000});
+                }
+                catch (Exception e)
+                {
+                    await e.Log(string.Empty, string.Empty);
+                    break;
+                }
             }
         }
 
@@ -320,27 +322,30 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
             var ele_HideViewMore =
                 await page.QuerySelectorAsync("//div[@id='lcViewMoreCm' and contains(@style,'display: none;')]");
             if (ele_HideViewMore is not null) break;
+            
+            
             var ele_CommentViewMore =
                 await page.QuerySelectorAsync("//a[contains(@class,'btn') and contains(text(),'Xem thêm bình luận')]");
             if (ele_CommentViewMore is null) break;
+            
             if (await ele_CommentViewMore.IsEnabledAsync())
             {
-                await ele_CommentViewMore.Click();
+                try
+                {
+                    await page.RunAndWaitForResponseAsync(async () =>
+                    {
+                        await ele_CommentViewMore.Click();
+                    }, response => response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 3000});
+                }
+                catch (Exception e)
+                {
+                    await e.Log(string.Empty, string.Empty);
+                    break;
+                }
             }
             else
             {
                 break;
-            }
-
-            //Find and wait response of api in click event 
-            try
-            {
-                await page.WaitForResponseAsync(response =>
-                    response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageWaitForResponseOptions {Timeout = 3000});
-            }
-            catch (Exception e)
-            {
-                await e.Log(string.Empty, string.Empty);
             }
         }
 
@@ -350,17 +355,18 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         {
             if (await item.IsEnabledAsync())
             {
-                await item.Click();
-            }
-
-            try
-            {
-                await page.WaitForResponseAsync(response =>
-                    response.Url.Contains(LoadMoreReplyApi) && response.Status == 200, new PageWaitForResponseOptions {Timeout = 3000});
-            }
-            catch (Exception e)
-            {
-                await e.Log(string.Empty, string.Empty);
+                try
+                {
+                    await page.RunAndWaitForResponseAsync(async () =>
+                    {
+                        await item.Click();
+                    }, response => response.Url.Contains(LoadMoreReplyApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 3000});
+                }
+                catch (Exception e)
+                {
+                    await e.Log(string.Empty, string.Empty);
+                    break;
+                }
             }
         }
 
