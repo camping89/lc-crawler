@@ -271,23 +271,26 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
     private async Task GetUrlDiseaseGroup(IPage homePage, Dictionary<string, List<string>> categoryUrls)
     {
         var ele_Groups = await homePage.QuerySelectorAllAsync("//div[@id='benh-desktop']//div[contains(@class,'title')]/h3");
+        // a[contains(text(),'Xem Thêm') or contains(text(),'Xem thêm') and boolean(@style) = false]
+        var loadMoreBtn = "//../..//ul//a[(contains(text(),'Xem Thêm') or contains(text(),'Xem thêm') or contains(text(),'xem thêm')) and boolean(@style) = false]";
+            
         foreach (var ele_Group in ele_Groups)
         {
             var category = await ele_Group.InnerTextAsync();
             await ele_Group.Click();
             await homePage.Wait(500);
-            var ele_LoadMore = await ele_Group.QuerySelectorAsync("//../..//ul//a[text()='Xem thêm' and boolean(@style) = false]");
+            var ele_LoadMore = await ele_Group.QuerySelectorAsync(loadMoreBtn);
             if (ele_LoadMore is not null)
             {
                 while (ele_LoadMore is not null)
                 {
                     await ele_LoadMore.Click();
                     await homePage.Wait(500);
-                    ele_LoadMore = await ele_Group.QuerySelectorAsync("//../..//ul//a[text()='Xem thêm' and boolean(@style) = false]");
+                    ele_LoadMore = await ele_Group.QuerySelectorAsync(loadMoreBtn);
                 }
             }
 
-            var ele_Urls = await ele_Group.QuerySelectorAllAsync("//../..//ul//a[boolean( text()='Xem thêm') = false]");
+            var ele_Urls = await ele_Group.QuerySelectorAllAsync("//../..//ul//a[boolean(contains(text(),'Xem thêm')) = false and boolean(contains(text(),'Xem Thêm')) = false and boolean(contains(text(),'xem thêm')) = false]");
             var urls = new List<string>();
             foreach (var ele_Url in ele_Urls)
             {
