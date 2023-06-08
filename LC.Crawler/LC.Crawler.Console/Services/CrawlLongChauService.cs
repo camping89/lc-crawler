@@ -18,12 +18,15 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     private const string LongChauUrl = "https://nhathuoclongchau.com/";
 
     // Example: https://nhathuoclongchau.com/filter/comments?productId=20580&type=desc&page=2
-    private const string LoadCommentApi = "comments?productId";
+    private const string LoadCommentApi = "comments?skipCount";
 
     // Example https://nhathuoclongchau.com/load-more-reply?id=54038&type=comment&page=2
     private const string LoadMoreReplyApi = "load-more-reply";
     private const string BrandThuocUrl = "https://nhathuoclongchau.com/thuoc";
     private const string BrandThuocName = "thuoc";
+
+    private const string CategoryApiUrl =
+        "https://api.nhathuoclongchau.com.vn/lccus/search-product-service/api/products/ecom/product/search/cate";
 
     protected override async Task<CrawlEcommercePayload> GetCrawlEcommercePayload(IPage page, string url)
     {
@@ -35,7 +38,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         var brandUrls = new List<string>();
         var brandTotalProducts = new List<string>();
         // 1. Get list product category
-        var ele_brandBtns = await page.QuerySelectorAllAsync("//ul/li/a/i/..");
+        var ele_brandBtns = await page.QuerySelectorAllAsync("//div[@class='ant-space-item']/li/a[not(contains(@href, 'bai-viet')) and not(contains(@href, 'benh')) and not(contains(@href, 'he-thong-cua-hang'))]");
 
         foreach (var result in ele_brandBtns)
         {
@@ -106,29 +109,17 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
     private static async Task GetTotalProductThuocBrand(IPage page, ICollection<string> brandTotalProducts)
     {
-        var ele_ViewMoreButton = await page.QuerySelectorAsync("//div[contains(@class, 'lc__view-more')]/div");
-        if (ele_ViewMoreButton is not null)
+        var ele_categories = await page.QuerySelectorAllAsync("//h2[text()='Thuốc theo nhóm trị liệu']/../div/a");
+        foreach (var elementHandle in ele_categories)
         {
-            await ele_ViewMoreButton.ClickAsync();
-            var ele_SubCategories = await page.QuerySelectorAllAsync("//div[contains(@class,'lc__list-cate')]//div[contains(@class, 'list-more-item')]");
-            if (ele_SubCategories.Any())
+            var cateUrl = await elementHandle.GetAttributeAsync("href");
+            if (!cateUrl.IsNotNullOrEmpty()) continue;
+            if (!cateUrl.Contains(LongChauUrl))
             {
-                foreach (var ele_SubCategory in ele_SubCategories)
-                {
-                    var ele_SubCateUrl = await ele_SubCategory.QuerySelectorAsync("//h3[contains(@class, 'cate__product-name')]/a");
-                    var ele_SubCateTotalCount = await ele_SubCategory.QuerySelectorAsync("//div[contains(@class, 'cate__product-count')]");
-
-                    var cateUrl = ele_SubCateUrl is not null ? await ele_SubCateUrl.GetAttributeAsync("href") : string.Empty;
-                    if (!cateUrl.IsNotNullOrEmpty()) continue;
-
-                    if (!cateUrl.Contains(LongChauUrl))
-                    {
-                        cateUrl = Url.Combine(LongChauUrl, cateUrl);
-                    }
-
-                    brandTotalProducts.Add(cateUrl);
-                }
+                cateUrl = Url.Combine(LongChauUrl, cateUrl);
             }
+            
+            brandTotalProducts.Add(cateUrl);
         }
     }
 
@@ -205,7 +196,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         await CrawlCategory(page, input);
 
         // Crawl Title
-        var ele_Title = await page.QuerySelectorAsync("//div[contains(@class,'pcd-title')]//h1");
+        var ele_Title = await page.QuerySelectorAsync("//div[contains(@class,'detail_product')]//h1");
         if (ele_Title is not null)
         {
             input.Title = (await ele_Title.InnerTextAsync()).Trim();
@@ -213,7 +204,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         }
 
         // Crawl ProductCode
-        var ele_ProductCode = await page.QuerySelectorAsync("//span[@id='copy']");
+        var ele_ProductCode = await page.QuerySelectorAsync("//div[contains(@class,'detail_sku-information')]/span");
         if (ele_ProductCode is not null)
         {
             input.Code = (await ele_ProductCode.InnerTextAsync()).Trim();
@@ -228,10 +219,10 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         // Crawl Images
         var ele_Images =
             await page.QuerySelectorAllAsync(
-                "//picture/img[contains(@onclick,'Product Detail Page') and contains(@onclick,'Large Image')]");
+                "//div[@class='cursor-pointer']/picture[contains(@class,'gallery-img')]/source[1]");
         foreach (var item in ele_Images)
         {
-            var imageUrl = await item.GetAttributeAsync("src");
+            var imageUrl = await item.GetAttributeAsync("srcset");
             if (imageUrl.IsNullOrWhiteSpace()) continue;
             input.ImageUrls.Add(imageUrl);
         }
@@ -243,7 +234,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         await PerformCrawlingComment(page, input);
 
         // Crawl Review
-        await PerformCrawlingReview(page, input);
+        // await PerformCrawlingReview(page, input);
     }
 
     private async Task PerformCrawlingReview(IPage page, CrawlEcommerceProductPayload input)
@@ -319,13 +310,8 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     {
         while (true)
         {
-            var ele_HideViewMore =
-                await page.QuerySelectorAsync("//div[@id='lcViewMoreCm' and contains(@style,'display: none;')]");
-            if (ele_HideViewMore is not null) break;
-            
-            
             var ele_CommentViewMore =
-                await page.QuerySelectorAsync("//a[contains(@class,'btn') and contains(text(),'Xem thêm bình luận')]");
+                await page.QuerySelectorAsync("//div[@class='title']/h2[contains(text(),'Hỏi đáp')]/../../../../../descendant::div[contains(@class,'lc-preview__loadmore')]/p[contains(text(),'Xem thêm ')]");
             if (ele_CommentViewMore is null) break;
             
             if (await ele_CommentViewMore.IsEnabledAsync())
@@ -335,7 +321,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
                     await page.RunAndWaitForResponseAsync(async () =>
                     {
                         await ele_CommentViewMore.Click();
-                    }, response => response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 3000});
+                    }, response => response.Url.Contains(LoadCommentApi) && response.Status == 200, new PageRunAndWaitForResponseOptions {Timeout = 10000});
                 }
                 catch (Exception e)
                 {
@@ -350,7 +336,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
         }
 
         var ele_ReplyViewMores =
-            await page.QuerySelectorAllAsync("//div[boolean(@style)=false]/a[contains(text(),'Xem thêm trả lời')]");
+            await page.QuerySelectorAllAsync("//div[@class='title']/h2[contains(text(),'Hỏi đáp')]/../../../../../descendant::div[contains(@class,'lc-preview__comments')]/descendant::li/p[contains(text(),'Xem thêm')]");
         foreach (var item in ele_ReplyViewMores)
         {
             if (await item.IsEnabledAsync())
@@ -370,16 +356,10 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
             }
         }
 
-        var ele_FirstPageComments =
-            await page.QuerySelectorAllAsync(
-                "//div[@id='commentList']/div/div/div[contains(@class,'lc__cmt-content flex-fill')]");
-
         var ele_NewPageComments =
             await page.QuerySelectorAllAsync(
-                "//div[@id='newPageComments']/div/div/div[contains(@class,'lc__cmt-content flex-fill')]");
-        var firstPageComments = await CrawlComments(ele_FirstPageComments);
-        input.Comments.AddRange(firstPageComments);
-
+                "//div[@class='title']/h2[contains(text(),'Hỏi đáp')]/../../../../../descendant::div[contains(@class,'lc-preview__comments')]/ul/li");
+        
         var newPageComments = await CrawlComments(ele_NewPageComments);
         input.Comments.AddRange(newPageComments);
     }
@@ -387,62 +367,35 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     private static async Task CrawlDescription(IPage page, CrawlEcommerceProductPayload input)
     {
         var ele_DescriptionViewMore = await page.QuerySelectorAsync(
-            "//div[@class='container']//div[contains(@class,'ppc-typhography tpcn-typho')]/div[boolean(@style)=false]/a");
+            "//div[@id='content-wrapper']/descendant::p[text()='Xem thêm']");
         if (ele_DescriptionViewMore is not null) await ele_DescriptionViewMore.Click();
-        var ele_Descriptions =
-            await page.QuerySelectorAllAsync(
-                "//div[@class='container']//div[contains(@class,'ppc-typhography tpcn-typho')]/div[boolean(@style)=false]");
-        var descriptions = new List<string>();
-        foreach (var item in ele_Descriptions)
+        var ele_Description =
+            await page.QuerySelectorAsync(
+                "//div[@id='content-wrapper']/div/div[contains(@class,'lc-col-2')]");
+        if (ele_Description is not null)
         {
-            string ele_FontTypeHtml = string.Empty;
-            var ele_FontType = await item.QuerySelectorAsync("//div[contains(@class,'option-wrap-update')]");
-            if (ele_FontType is not null)
-            {
-                ele_FontTypeHtml = await ele_FontType.InnerHTMLAsync();
-            }
-
-            var text = await item.InnerHTMLAsync();
-            if (text.IsNullOrWhiteSpace()) continue;
-            if (ele_FontTypeHtml.IsNotNullOrEmpty())
-            {
-                text = text.Replace(ele_FontTypeHtml, string.Empty);
-            }
-
-            descriptions.Add(text);
+            var desc = await ele_Description.InnerHTMLAsync();
+            input.Description = desc.RemoveHrefFromA();
         }
-
-        var ele_CallOutContent = await page.QuerySelectorAsync("//div[@class='container']//div[contains(@class,'callout-content')]");
-        if (ele_CallOutContent is not null)
-        {
-            var text = await ele_CallOutContent.InnerTextAsync();
-            if (text.IsNotNullOrWhiteSpace())
-            {
-                descriptions.Add(text);
-            }
-        }
-
-        var desc = string.Join(Environment.NewLine, descriptions).Trim();
-        input.Description = desc.RemoveHrefFromA();
     }
 
     private async Task CrawlAttributes(IPage page, CrawlEcommerceProductPayload input)
     {
-        var ele_Ratings = await page.QuerySelectorAllAsync("//ul/ul[@id='starRatingTop']/../li/i[@class='ic-star']");
+        var ele_Ratings = await page.QuerySelectorAsync("//div[@class='rating-avarageScore']/p[2]");
         input.Attributes.Add(new EcommerceProductAttribute
         {
             Key = "Rating",
-            Value = ele_Ratings.Count.ToString()
+            Value = (await ele_Ratings.InnerTextAsync())
         });
 
-        var ele_Brand = await page.QuerySelectorAsync("//div/p[contains(text(),'Thương hiệu')]");
+        var ele_Brand = await page.QuerySelectorAsync("//div/span[contains(text(),'Thương hiệu')]/../span[2]");
         if (ele_Brand is not null)
         {
-            input.Brand = (await ele_Brand.InnerTextAsync()).Replace("Thương hiệu:", string.Empty).Trim();
+            input.Brand = (await ele_Brand.InnerTextAsync());
         }
 
         var ele_ProductDetails =
-            await page.QuerySelectorAllAsync("//div[contains(@class,'pcd-meta')]/table/tbody/tr");
+            await page.QuerySelectorAllAsync("//table[@class='content-list']/tbody/tr");
         foreach (var item in ele_ProductDetails)
         {
             var td_Elements = await item.QuerySelectorAllAsync("//td");
@@ -486,7 +439,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
     private static async Task CrawlCategory(IPage page, CrawlEcommerceProductPayload input)
     {
-        var ele_Categories = await page.QuerySelectorAllAsync("//div[@class='container']/ol/li/a");
+        var ele_Categories = await page.QuerySelectorAllAsync("//div[@id='overlay-menu']/../div/div/nav/ol/li/span[@class='ant-breadcrumb-link']");
         var categories = new List<string>();
         foreach (var item in ele_Categories)
         {
@@ -503,38 +456,31 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     {
         var category = crawlEcommerceProductPayload.Url.Replace(LongChauUrl, string.Empty);
         var productUrls = new ConcurrentBag<string>();
-        var pageCount = 1;
+        var skipCount = 0;
         while (true)
         {
+            
             var isThuocPage = crawlEcommerceProductPayload.Url.Contains($"/{BrandThuocName}/");
-
-            var clientUrl = isThuocPage
-                ?
-                // $"{BrandThuocUrl}/load-more/?type=productBestSeller&page={pageCount}&slug_cate={category.Replace($"{BrandThuocName}/", string.Empty)}&cate_lev=2" : 
-                // $"{crawlEcommerceProductPayload.Url}?page={pageCount}&loadMore=true&sort=mua-nhieu-nhat&currentLink={category}";
-                Url.Combine(BrandThuocUrl, category.Replace($"{BrandThuocName}/", string.Empty), $"?type=hotsale&page={pageCount}&filter=1")
-                : Url.Combine(LongChauUrl, category, $"?type=hotsale&page={pageCount}&filter=1$size=10");
-            var client = new RestClient(clientUrl);
+            var client = new RestClient(CategoryApiUrl);
             var request = new RestRequest();
-            request.AddHeader("x-requested-with", "XMLHttpRequest");
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            if (isThuocPage)
+            {
+                category = Url.Combine(BrandThuocName, category);
+            }
 
-            var response = await client.GetAsync<LCApiResponse>(request);
-            // var view     = isThuocPage ? response?.Items : response?.View;
-            var view = response.HTML;
-            if (string.IsNullOrEmpty(view)) break;
+            request.AddJsonBody(new LCApiRequest(skipCount, 50, new List<string>
+            {
+                "brand",
+                "objectUse",
+                "indications",
+                "priceRanges"
+            }, 4, new List<string> { category }));
 
-            var regex = isThuocPage ? $"href=\"/{BrandThuocName}/" : $"href=\"/{category}/";
-            var items = view.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            var response = await client.PostAsync<LCApiResponse>(request);
+            
+            if (response.products.IsNullOrEmpty()) break;
 
-            var urls = (from item in items
-                where item.Contains(regex)
-                select Url.Combine(LongChauUrl, isThuocPage ? $"{BrandThuocName}" : category,
-                    item.Replace(regex, string.Empty)
-                        .Replace("/n", string.Empty)
-                        .Replace("\"", string.Empty)
-                        .Replace(">", string.Empty)
-                        .Trim())).Distinct().ToList();
+            var urls = response.products.Select(product => Url.Combine(LongChauUrl, product.slug)).ToList();
 
             if (urls.Any())
             {
@@ -551,79 +497,48 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
             using var autoResetEvent = new AutoResetEvent(false);
             autoResetEvent.WaitOne(100);
-            pageCount += 1;
+            skipCount += 50;
         }
 
         System.Console.WriteLine($"Total Products Before Distinct: {productUrls.Count}");
-        var returnValue = productUrls.ToList();
+        var returnValue = productUrls.Distinct().ToList();
         return returnValue;
     }
 
     private async Task<List<EcommerceProductComment>> CrawlComments(IEnumerable<IElementHandle> ele_FirstPageComments)
     {
         var comments = new List<EcommerceProductComment>();
-        var commentParent = new EcommerceProductComment();
+        
         var index = 1;
         foreach (var item in ele_FirstPageComments)
         {
-            var isFeedback = false;
-            var comment = new EcommerceProductComment();
-
-            var nameQuery = await item.QuerySelectorAsync("//div[contains(@class,'avatar-name')]");
-            if (nameQuery is not null)
+            var parentComment = new EcommerceProductComment();
+            var ele_commentParent = await item.QuerySelectorAsync("//div/descendant::div[@class='content flex-1']/p");
+            if (ele_commentParent is not null)
             {
-                comment.Name = (await nameQuery.InnerTextAsync()).Trim();
+                parentComment.Name = (await ele_commentParent.InnerTextAsync()).Trim().Replace("Quản Trị Viên", string.Empty)
+                    .Replace("Quản trị viên",string.Empty);
             }
-
-            var commentTime = string.Empty;
-            var timeQuery = await item.QuerySelectorAsync("//span[contains(@class,'avatar-time')]");
-            if (timeQuery is not null)
+            
+            var ele_content = await item.QuerySelectorAsync("//div/descendant::div[@class='user-comment']/p");
+            if (ele_content is not null)
             {
-                commentTime = (await timeQuery.InnerTextAsync()).Trim();
-                comment.CreatedAt = commentTime.TimeAgoToDateTime();
+                parentComment.Content = (await ele_content.InnerTextAsync()).Trim();
             }
-
-            // time query is null but time feedback is not null -> this comment is feedback
-            var timeFeedbackQuery = await item.QuerySelectorAsync("//div[contains(@class,'avt-time')]");
-            if (timeFeedbackQuery is not null)
+            
+            var ele_dateTime = await item.QuerySelectorAsync("//div/descendant::div[@class='flex items-center']/span[1]");
+            if (ele_dateTime is not null)
             {
-                isFeedback = true;
-                commentTime = (await timeFeedbackQuery.InnerTextAsync()).Trim();
-                comment.CreatedAt = commentTime.TimeAgoToDateTime();
+                var commentTime = (await ele_dateTime.InnerTextAsync()).Trim();
+                parentComment.CreatedAt = commentTime.TimeAgoToDateTime();
             }
-
-            var contentQuery = await item.QuerySelectorAsync("//div[contains(@class,'lc__cmt-content--full')]");
-            if (contentQuery is not null)
+            
+            var ele_childrenComment = await item.QuerySelectorAllAsync("//ul/li");
+            if (ele_childrenComment.IsNotNullOrEmpty())
             {
-                comment.Content = (await contentQuery.InnerTextAsync()).Trim();
+                parentComment.Feedbacks.AddRange(await CrawlComments(ele_childrenComment));
             }
-
-            //Get Like example: (1)
-            var likeQuery = await item.QuerySelectorAsync("//span[contains(@class,'total-like')]");
-            if (likeQuery is not null)
-            {
-                var like = (await likeQuery.InnerTextAsync()).Trim();
-                like = Regex.Replace(like, "[()]", string.Empty).Trim();
-                comment.Likes = like.ToIntODefault();
-            }
-
-            if (comment.Name.Contains(commentTime))
-                comment.Name = comment.Name.Replace(commentTime, string.Empty).Trim();
-
-            // feedback is in the last comment
-            // if not set the last comment is the review just crawled
-            if (isFeedback)
-            {
-                commentParent.Feedbacks.Add(comment);
-                comments.Remove(comments.Last());
-                comments.Add(commentParent);
-            }
-            else
-            {
-                comments.Add(comment);
-                commentParent = comment;
-                index++;
-            }
+            comments.Add(parentComment);
         }
 
         return comments;
@@ -704,8 +619,74 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
     public class LCApiResponse
     {
-        public string View { get; set; }
-        public string Items { get; set; }
-        public string HTML { get; set; }
+        public List<Product> products { get; set; }
+        public List<Aggregation> aggregations { get; set; }
+        public int totalCount { get; set; }
+    }
+    
+    public class LCApiRequest
+    {
+        public LCApiRequest(int skipCount, int maxResultCount, IList<string> codes, int sortType, IList<string> category)
+        {
+            SkipCount = skipCount;
+            MaxResultCount = maxResultCount;
+            Codes = codes;
+            SortType = sortType;
+            Category = category;
+        }
+
+        public int SkipCount { get; set; }
+        public int MaxResultCount { get; set; }
+        public IList<string> Codes { get; set; }
+        public int SortType { get; set; }
+        public IList<string> Category { get; set; }
+    }
+    
+    public class Aggregation
+    {
+        public string code { get; set; }
+        public List<string> values { get; set; }
+    }
+    
+    public class Category
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string parentName { get; set; }
+        public string slug { get; set; }
+        public int level { get; set; }
+        public bool isActive { get; set; }
+    }
+
+    public class Price
+    {
+        public int id { get; set; }
+        public int measureUnitCode { get; set; }
+        public string measureUnitName { get; set; }
+        public bool isSellDefault { get; set; }
+        public double price { get; set; }
+        public string currencySymbol { get; set; }
+        public bool isDefault { get; set; }
+        public int inventory { get; set; }
+    }
+
+    public class Product
+    {
+        public string sku { get; set; }
+        public string name { get; set; }
+        public string webName { get; set; }
+        public string image { get; set; }
+        public List<Category> category { get; set; }
+        public Price price { get; set; }
+        public string slug { get; set; }
+        public string ingredients { get; set; }
+        public string dosageForm { get; set; }
+        public string brand { get; set; }
+        public int displayCode { get; set; }
+        public bool isActive { get; set; }
+        public bool isPublish { get; set; }
+        public double searchScoring { get; set; }
+        public int productRanking { get; set; }
+        public string specification { get; set; }
     }
 }
