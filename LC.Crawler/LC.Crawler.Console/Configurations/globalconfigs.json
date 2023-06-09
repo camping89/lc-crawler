@@ -774,124 +774,120 @@
             "SubCategories" : [
               {
                 "Name" : "Dinh dưỡng",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/dinh-duong&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Ăn ngon khỏe",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/an-ngon-khoe?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/dinh-duong/an-ngon-khoe&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Thực phẩm dinh dưỡng",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/thuc-pham-dinh-duong?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/dinh-duong/thuc-pham-dinh-duong&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Chế độ ăn kiêng",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/dinh-duong/che-do-an-kieng?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/dinh-duong/che-do-an-kieng&limit={0}&offset={1}"
                   }
                 ]
               },
               {
                 "Name" : "Phòng & chữa bệnh",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/phong-chua-benh&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Kiến thức y khoa",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/kien-thuc-y-khoa?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/phong-chua-benh/kien-thuc-y-khoa&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Y học cổ truyền",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/y-hoc-co-truyen?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/phong-chua-benh/y-hoc-co-truyen&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Sức khỏe gia đình",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/phong-chua-benh/suc-khoe-gia-dinh?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/phong-chua-benh/suc-khoe-gia-dinh&limit={0}&offset={1}"
                   }
                 ]
               },
               {
                 "Name" : "Người cao tuổi",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/nguoi-cao-tuoi?page={0}"
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/nguoi-cao-tuoi&limit={0}&offset={1}"
               },
               {
                 "Name" : "Khỏe đẹp",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/khoe-dep&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Dưỡng da",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/duong-da?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/khoe-dep/duong-da&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Chăm sóc tóc",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/cham-soc-toc?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/khoe-dep/cham-soc-toc&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Chăm sóc cơ thể",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/cham-soc-co-the?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/khoe-dep/cham-soc-co-the&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Mỹ phẩm",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/khoe-dep/my-pham?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/khoe-dep/my-pham&limit={0}&offset={1}"
                   }
                 ]
               },
               {
                 "Name" : "Mẹ & bé",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/me-va-be&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Chăm sóc bé",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/cham-soc-be?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/me-va-be/cham-soc-be&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Kế hoạch mang thai",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/ke-hoach-mang-thai?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/me-va-be/ke-hoach-mang-thai&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Mang thai",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/mang-thai?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/me-va-be/mang-thai&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Sinh con",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/me-va-be/sinh-con?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/me-va-be/sinh-con&limit={0}&offset={1}"
                   }
                 ]
               },
               {
                 "Name" : "Giới tính",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/gioi-tinh&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Đời sống tình dục",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh/doi-song-tinh-duc?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/gioi-tinh/doi-song-tinh-duc&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Sức khỏe sinh sản",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/gioi-tinh/suc-khoe-sinh-san?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/gioi-tinh/suc-khoe-sinh-san&limit={0}&offset={1}"
                   }
                 ]
               },
               {
                 "Name" : "Tin khuyến mãi",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/tin-khuyen-mai?page={0}"
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/tin-khuyen-mai&limit={0}&offset={1}"
               },
               {
                 "Name" : "Tin tức sức khỏe",
-                "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe?page={0}",
+                "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/tin-tuc-suc-khoe&limit={0}&offset={1}",
                 "SubCategories" : [
                   {
                     "Name" : "Tin y dược",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/tin-y-duoc?page={0}"
-                  },
-                  {
-                    "Name" : "Sự kiện",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/su-kien?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/tin-tuc-suc-khoe/tin-y-duoc&limit={0}&offset={1}"
                   },
                   {
                     "Name" : "Dịch bệnh",
-                    "Url" : "https://nhathuoclongchau.com/bai-viet/tin-tuc-suc-khoe/dich-benh?page={0}"
+                    "Url" : "https://api.nhathuoclongchau.com.vn/lccus/prod-cms/api/v2/health-articles/category/slug?slug=bai-viet/tin-tuc-suc-khoe/dich-benh&limit={0}&offset={1}"
                   }
                 ]
-              }
+              }              
             ]
           }
         ]

@@ -34,6 +34,16 @@ public class CrawlLCArticleApiBaseService : BaseService, ICrawlLCService
         });
     }
     
+    protected virtual async Task<bool> IsValidArticle(int totalArticle)
+    {
+        return await Task.Factory.StartNew(() => totalArticle <= GetTotalCrawlingArticlesInterval());
+    }
+    
+    protected virtual async Task<bool> IsValidArticle(DateTime? createdAtDateTime)
+    {
+        return await Task.Factory.StartNew(() => createdAtDateTime >= GetDaysCrawlingInterval().Days().Ago());
+    }
+    
     public async Task<CrawlResult?> Execute(CrawlerDataSourceItem item, CrawlerCredentialEto credential)
     {
         InitLogConfig(credential);

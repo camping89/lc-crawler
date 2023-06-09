@@ -1,19 +1,21 @@
 using System.Collections.Concurrent;
 using System.Globalization;
-using System.Web;
 using Dasync.Collections;
-using HtmlAgilityPack;
-using LC.Crawler.Client.Configurations;
 using LC.Crawler.Client.Entities;
+using LC.Crawler.Client.Entities.LongChau;
 using LC.Crawler.Core.Extensions;
 using LC.Crawler.Core.Helpers;
 using Newtonsoft.Json;
 using RestSharp;
+using Category = LC.Crawler.Client.Configurations.Category;
+using Url = Flurl.Url;
 
 namespace LC.Crawler.Console.Services.CrawlByAPI;
 
 public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
 {
+    private const string LongChauUrl = "https://nhathuoclongchau.com.vn/";
+    
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(string url)
     {
         var crawlArticlePayload = new ConcurrentBag<ArticlePayload>();
@@ -51,103 +53,29 @@ public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
         {
             try
             {
-                var htmlString = await GetRawData(articlePayload.Url);
-                if (htmlString.IsNotNullOrWhiteSpace())
+                var lcArticleDetail = await GetRawData(articlePayload.Url);
+                if (lcArticleDetail is not null)
                 {
-                    var doc = new HtmlDocument();
-                    doc.LoadHtml(htmlString);
+                    articlePayload.ShortDescription = lcArticleDetail.pageProps.detail.data.shortDescription;
+                    articlePayload.Category = lcArticleDetail.pageProps.detail.breadcrumb.Select(_ => _.breadcrumbName).JoinAsString(" -> ");
+                    articlePayload.Tags = lcArticleDetail.pageProps.detail.data.tags.Select(_ => _.title).ToList();
+                    articlePayload.CreatedAt = lcArticleDetail.pageProps.detail.data.createdAt;
 
-                    var ele_ShortDesc = doc.DocumentNode.SelectSingleNode("//div[contains(@class,' post-detail')]/div/p[@class='short-description']");
-                    if (ele_ShortDesc is not null)
+                    if (GlobalConfig.CrawlConfig.ValidateArticleByDateTime)
                     {
-                        var shortDescription = ele_ShortDesc.InnerText;
-                        articlePayload.ShortDescription = shortDescription.RemoveHrefFromA();
-                    }
-
-                    var categoryName = string.Empty;
-                    var ele_Categories = doc.DocumentNode.SelectNodes("//ol[contains(@class, 'breadcrumb')]/li/a[not(text() = 'Trang chủ')]");
-                    if (ele_Categories is not null && ele_Categories.Any())
-                    {
-                        foreach (var ele_Category in ele_Categories)
+                        if (!await IsValidArticle(articlePayload.CreatedAt))
                         {
-                            if (categoryName.IsNotNullOrEmpty())
-                            {
-                                categoryName += " -> ";
-                            }
-
-                            categoryName += ele_Category.InnerText;
+                            break;
                         }
                     }
 
-                    if (categoryName.IsNotNullOrEmpty())
-                    {
-                        articlePayload.Category = categoryName;
-                    }
+                    // remove useless value in content
+                    var content = lcArticleDetail.pageProps.detail.data.description;
+                    content = content.RemoveHrefFromA();
+                    articlePayload.Content = content;
 
-                    var ele_Content = doc.DocumentNode.SelectSingleNode("//div[contains(@class,' post-detail')]/div[@class='r1-1']");
-                    if (ele_Content is not null)
-                    {
-                        var createdAtStr = string.Empty;
-                        var ele_CreatedAt = doc.DocumentNode.SelectSingleNode("//div[@class= 'detail']/p");
-                        if (ele_CreatedAt is not null)
-                        {
-                            createdAtStr = ele_CreatedAt.InnerText;
-                        }
+                    System.Console.WriteLine(JsonConvert.SerializeObject(articlePayload));
 
-                        var content = ele_Content.InnerHtml;
-                        
-                        var ele_ContentDoc = new HtmlDocument();
-                        ele_ContentDoc.LoadHtml(content);
-                        var ele_RelatedNews = ele_ContentDoc.DocumentNode.SelectSingleNode("//div[@class='list-title']");
-                        var relatedNews = string.Empty;
-                        if (ele_RelatedNews is not null)
-                        {
-                            relatedNews = ele_RelatedNews.InnerHtml;
-                        }
-
-                        var hashtag = string.Empty;
-                        var ele_Hashtag = ele_ContentDoc.DocumentNode.SelectSingleNode("//div[@class='tag']");
-                        if (ele_Hashtag is not null)
-                        {
-                            hashtag = ele_Hashtag.InnerHtml;
-                            
-                            var hashtagDoc = new HtmlDocument();
-                            hashtagDoc.LoadHtml(hashtag);
-                            
-                            var ele_Hashtags = hashtagDoc.DocumentNode.SelectNodes("//li");
-                            if (ele_Hashtags is not null && ele_Hashtags.Any())
-                            {
-                                articlePayload.Tags = new List<string>();
-                                foreach (var eleHashtag in ele_Hashtags)
-                                {
-                                    var tag = eleHashtag.InnerText;
-                                    articlePayload.Tags.Add(tag);
-                                }
-                            }
-                        }
-
-                        // remove useless value in content
-                        content = content.Replace($"<h1>{articlePayload.Title}</h1>", string.Empty);
-                        if (createdAtStr.IsNotNullOrEmpty())
-                        {
-                            content = content.Replace($"{createdAtStr}", string.Empty);
-                        }
-
-                        if (relatedNews.IsNotNullOrEmpty())
-                        {
-                            content = content.Replace(relatedNews, string.Empty);
-                        }
-
-                        if (hashtag.IsNotNullOrEmpty())
-                        {
-                            content = content.Replace(hashtag, string.Empty);
-                        }
-
-                        content = content.RemoveHrefFromA();
-                        articlePayload.Content = content;
-                        
-                        System.Console.WriteLine(JsonConvert.SerializeObject(articlePayload));
-                    }
                 }
             }
             catch (Exception e)
@@ -171,103 +99,45 @@ public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
         }
 
         var articlesCategory = new List<ArticlePayload>();
-        var pageNumber = 1;
+        var offset = 0;
+        var limit = 10;
         bool isValidArticle = true;
         while (isValidArticle)
         {
             try
             {
-                var requestUrl = string.Format(category.Url, pageNumber);
-                var htmlString = await GetRawData(requestUrl);
-
-                if (htmlString.IsNotNullOrWhiteSpace())
+                var requestUrl = string.Format(category.Url, limit, offset);
+                var lcArticleApiResponse = await GetArticleResponse(requestUrl);
+                if (lcArticleApiResponse is null) break;
+                if (lcArticleApiResponse.data.results.IsNullOrEmpty() ||
+                    lcArticleApiResponse.data.results.Any(_=>_.id == 0))
                 {
-                    var doc = new HtmlDocument();
-                    doc.LoadHtml(htmlString);
-
-                    var ele_Hover = doc.DocumentNode.SelectNodes("//div[@class='ss-chuyende-content']//div[@class='img-hover']/div");
-                    if (ele_Hover is not null && ele_Hover.Any())
+                    isValidArticle = false;
+                }
+                else
+                {
+                    foreach (var dataResult in lcArticleApiResponse.data.results)
                     {
-                        foreach (var elementHandle in ele_Hover)
+                        System.Console.WriteLine($"Url: {dataResult.slug}");
+                        var articlePayload = new ArticlePayload
                         {
-                            var elementHandleDoc = new HtmlDocument();
-                            elementHandleDoc.LoadHtml(elementHandle.InnerHtml);
+                            Url = Url.Combine(LongChauUrl, dataResult.slug),
+                            Title = dataResult.name,
+                            FeatureImage = dataResult.primaryImage.url
+                        };
 
-                            var ele_ArticleUrl = elementHandleDoc.DocumentNode.SelectSingleNode("//a");
-                            var articleUrl = ele_ArticleUrl.Attributes["href"].Value;
-                            var ele_Image = elementHandleDoc.DocumentNode.SelectSingleNode("//img");
-                            var img = ele_Image.Attributes["src"].Value;
-                            var ele_Title = elementHandleDoc.DocumentNode.SelectSingleNode("//h3");
-                            var title = ele_Title.InnerText;
-                            var ele_Date = elementHandleDoc.DocumentNode.SelectSingleNode("//span");
-                            var dateString = ele_Date.InnerText;
-                            var dateTime = GetArticleCreatedAt(dateString);
-
-                            System.Console.WriteLine($"Url: {articleUrl}");
-
-                            articlesCategory.Add(new ArticlePayload
-                            {
-                                Url = articleUrl,
-                                Title = title,
-                                FeatureImage = img,
-                                CreatedAt = dateTime
-                            });
-                        }
-                    }
-
-                    var ele_Articles = doc.DocumentNode.SelectNodes("//div[contains(@class, 'chuyende-sub-news')]//article[@class='t-news']");
-                    if (ele_Articles is null || !ele_Articles.Any())
-                    {
-                        ele_Articles = doc.DocumentNode.SelectNodes("//div[contains(@class, 'ss-chuyende-news')]//article[@class='t-news']");
-                    }
-
-                    if (ele_Articles is not null && ele_Articles.Any())
-                    {
-                        foreach (var eleArticle in ele_Articles)
+                        if (!GlobalConfig.CrawlConfig.ValidateArticleByDateTime)
                         {
-                            var eleArticleDoc = new HtmlDocument();
-                            eleArticleDoc.LoadHtml(eleArticle.InnerHtml);
-
-                            var ele_CreatedAt = eleArticleDoc.DocumentNode.SelectSingleNode("//span[@class='date']");
-                            if (ele_CreatedAt is null) continue;
-
-                            var createdAt = GetArticleCreatedAt(ele_CreatedAt.InnerText);
-                            if (!await IsValidArticle(articlesCategory.Count, string.Empty, createdAt))
+                            if (!await IsValidArticle(articlesCategory.Count))
                             {
                                 isValidArticle = false;
                                 break;
                             }
-
-                            var ele_Link = eleArticleDoc.DocumentNode.SelectSingleNode("//a[@class='title']");
-                            if (ele_Link is null) continue;
-
-                            var link = ele_Link.Attributes["href"].Value;
-
-                            var ele_Image = eleArticleDoc.DocumentNode.SelectSingleNode("//img");
-                            var image = string.Empty;
-                            var title = string.Empty;
-                            if (ele_Image is not null)
-                            {
-                                var att = ele_Image.Attributes["data-src"] ?? ele_Image.Attributes["src"];
-                                image = att.Value;
-                                title = ele_Image.Attributes["alt"].Value;
-                            }
-
-                            System.Console.WriteLine($"Url: {link} - Category {category.Name} - Page {pageNumber}");
-
-                            articlesCategory.Add(new ArticlePayload
-                            {
-                                Url = link,
-                                CreatedAt = createdAt,
-                                FeatureImage = image,
-                                Title = title
-                            });
                         }
+
+                        articlesCategory.Add(articlePayload);
                     }
-                    else
-                    {
-                        isValidArticle = false;
-                    }
+                    
                 }
             }
             catch (Exception e)
@@ -276,7 +146,7 @@ public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
             }
             finally
             {
-                pageNumber += 1;
+                offset += limit;
             }
         }
 
@@ -285,17 +155,35 @@ public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
         return articlePayloads.ToList();
     }
 
-    private async Task<string> GetRawData(string url)
+    private async Task<LCArticleDetail> GetRawData(string url)
     {
+        // https://nhathuoclongchau.com.vn/_next/data/4qkGK4Rz6hWfGCqbsEv8U/bai-viet/detail/la-e-an-song-duoc-khong-cac-bai-thuoc-tu-la-e.html.json
+        var postUrl = url.Split("bai-viet")[1].Trim('/');
+        url = url.Replace("bai-viet", "_next/data/4qkGK4Rz6hWfGCqbsEv8U/bai-viet/detail");
+        url = $"{url}.json?postSlug={postUrl}";
+        // url = "https://nhathuoclongchau.com.vn/_next/data/4qkGK4Rz6hWfGCqbsEv8U/bai-viet/detail/la-e-an-song-duoc-khong-cac-bai-thuoc-tu-la-e.html.json";
         var client = new RestClient(url);
         var request = new RestRequest();
 
-        var response = await client.ExecuteAsync<string>(request);
-        var content = response.Content;
-        content = HttpUtility.HtmlDecode(content);
-        using var autoResetEvent = new AutoResetEvent(false);
-        autoResetEvent.WaitOne(100);
-        return content;
+        var response = await client.ExecuteGetAsync<LCArticleDetail>(request);
+        using (var autoResetEvent = new AutoResetEvent(false))
+        {
+            autoResetEvent.WaitOne(100);
+        }
+        return response.Data;
+    }
+
+    private async Task<LCArticleApiResponse> GetArticleResponse(string url)
+    {
+        var client = new RestClient(url);
+        var request = new RestRequest();
+        
+        var response = await client.ExecuteGetAsync<LCArticleApiResponse>(request);
+        using (var autoResetEvent = new AutoResetEvent(false))
+        {
+            autoResetEvent.WaitOne(100);
+        }
+        return response.Data;
     }
 
     private DateTime GetArticleCreatedAt(string articleTime)
@@ -313,4 +201,50 @@ public class CrawlLongChauArticleApiService : CrawlLCArticleApiBaseService
         var createdAt = DateTime.ParseExact(articleTime, "dd/MM/yyyy", CultureInfo.CurrentCulture);
         return createdAt;
     }
+}
+
+public class LCArticleApiResponse
+{
+    public int code { get; set; }
+    public string message { get; set; }
+    public Data data { get; set; }
+}
+
+public class Result
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public string slug { get; set; }
+    public object redirectUrl { get; set; }
+    public string shortDescription { get; set; }
+    public PrimaryImage primaryImage { get; set; }
+    public LCArticleApiCategory category { get; set; }
+}
+
+public class PrimaryImage
+{
+    public int id { get; set; }
+    public string alternativeText { get; set; }
+    public string caption { get; set; }
+    public string ext { get; set; }
+    public string mime { get; set; }
+    public string url { get; set; }
+    public string name { get; set; }
+    public string hash { get; set; }
+    public int width { get; set; }
+    public int height { get; set; }
+}
+
+public class Data
+{
+    public List<Result> results { get; set; }
+    public int totalCount { get; set; }
+}
+
+public class LCArticleApiCategory
+{
+    public bool isPrimary { get; set; }
+    public int id { get; set; }
+    public string name { get; set; }
+    public string fullPathSlug { get; set; }
 }
