@@ -14,12 +14,10 @@ namespace LC.Crawler.Console.Services;
 public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 {
     private const string ArticleBaseSlug = "bai-viet";
+    private const string LongChauUrl = "https://nhathuoclongchau.com.vn/";
 
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(IPage page, string url)
     {
-        // var articlePayloads = await GetArticleLinks(url);
-        // await GetMainArticleLinks(url, articlePayloads);
-
         return new CrawlArticlePayload
         {
             ArticlesPayload = new List<ArticlePayload>(),
@@ -88,11 +86,6 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
     protected override async Task<ConcurrentBag<ArticlePayload>> GetArticlePayload(CrawlArticlePayload crawlArticlePayload)
     {
         var lcArticles = new ConcurrentBag<ArticlePayload>();
-        // await crawlArticlePayload.ArticlesPayload.Partition(GlobalConfig.CrawlConfig.Crawl_BatchSize).ParallelForEachAsync(async articlePayloadBatch =>
-        // {
-        //     var articles = await CrawlLCArticles(articlePayloadBatch.ToList());
-        //     lcArticles.AddRange(articles);
-        // }, GlobalConfig.CrawlConfig.Crawl_MaxThread);
 
         var articleDisease = await CrawlDisease(crawlArticlePayload.Url);
 
@@ -136,14 +129,14 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
                                 System.Console.WriteLine($"Crawl Article {categoryUrl.Key} - {url}");
 
                                 var articlePayload = new ArticlePayload();
-                                var ele_title = await homePage.QuerySelectorAsync("//div[@class='content-main']//div[contains(@class,'cs-benh-heading')]/h1");
+                                var ele_title = await homePage.QuerySelectorAsync("//h1[contains(@class,'text-text-primary')]");
                                 if (ele_title is not null)
                                 {
                                     var title = await ele_title.InnerTextAsync();
                                     articlePayload.Title = title;
                                 }
 
-                                var ele_CreatedAt = await homePage.QuerySelectorAsync("//div[@class='content-main']//div[contains(@class,'cs-benh-heading')]/span[@class='time']");
+                                var ele_CreatedAt = await homePage.QuerySelectorAsync("//h1[contains(@class,'text-text-primary')]/../div[2]//span[contains(@class,'estore-icon')]/../span[2]");
                                 if (ele_CreatedAt is not null)
                                 {
                                     var createdAt = GetArticleCreatedAt(await ele_CreatedAt.InnerTextAsync());
@@ -151,14 +144,14 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
                                 }
 
                                 var ele_ShortDescription =
-                                    await homePage.QuerySelectorAsync("//div[@class='content-main']//div[contains(@class,'cs-benh-heading')]/div[@class='description']");
+                                    await homePage.QuerySelectorAsync("//p[contains(@class,'text-text-primary')]");
                                 if (ele_ShortDescription is not null)
                                 {
                                     var shortDescription = (await ele_ShortDescription.InnerTextAsync()).Trim();
                                     articlePayload.ShortDescription = shortDescription;
                                 }
 
-                                var ele_content = await homePage.QuerySelectorAsync("//div[@class='content-main']//div[contains(@class,'cs-benh-content')]");
+                                var ele_content = await homePage.QuerySelectorAsync("//div[@class='news-detail-content-wrapper']");
                                 if (ele_content is not null)
                                 {
                                     var content = await ele_content.InnerHTMLAsync();
@@ -166,7 +159,7 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
                                     articlePayload.Content = content.Trim();
                                 }
 
-                                var ele_Tags = await homePage.QuerySelectorAllAsync("//div[@class='content-main']//div[contains(@class,'tags-item')]/a");
+                                var ele_Tags = await homePage.QuerySelectorAllAsync("//span[text()='Chủ đề:']/../a");
                                 var tags = new List<string>();
                                 foreach (var ele_Tag in ele_Tags)
                                 {
@@ -222,7 +215,7 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
                     await GetUrlDiseasesByBodyPart(homePage, categoryUrls);
 
                     // Benh Thuong Gap
-                    var categories = new List<string> {"BỆNH NAM GIỚI", "BỆNH NỮ GIỚI", "BỆNH NGƯỜI GIÀ", "BỆNH TRẺ EM"};
+                    var categories = new List<string> {"Bệnh nam giới", "Bệnh nữ giới", "Bệnh người già", "Bệnh trẻ em"};
                     foreach (var category in categories)
                     {
                         await GetUrlCommonDiseases(category, homePage, browserContext, categoryUrls);
@@ -248,67 +241,120 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
         return categoryUrls;
     }
 
-    private static async Task GetUrlDiseasesByBodyPart(IPage homePage, Dictionary<string, List<string>> categoryUrls)
+    private async Task GetUrlDiseasesByBodyPart(IPage homePage, Dictionary<string, List<string>> categoryUrls)
     {
-        var ele_Btns = await homePage.QuerySelectorAllAsync("//a[contains(@class,'nut-btn')]");
-        foreach (var ele_btn in ele_Btns)
+        var ele_buttons = await homePage.QuerySelectorAllAsync("//div[@class='menu-list md:h-full']/button");
+        if (ele_buttons.IsNotNullOrEmpty())
         {
-            var category = $"Bộ phận cơ thể -> {await ele_btn.InnerTextAsync()}";
-            await ele_btn.Click();
-            await homePage.Wait(500);
-            var ele_Links = await homePage.QuerySelectorAllAsync("//div[@class='tab-content current']/a[boolean(@href)]");
-            var urls = new List<string>();
-            foreach (var ele_Link in ele_Links)
+            foreach (var ele_button in ele_buttons)
             {
-                var articleUrl = await ele_Link.GetAttributeAsync("href");
+                var category = $"Cơ thể người -> {await ele_button.InnerTextAsync()}";
+                await ele_button.Click();
+                await homePage.Wait(500);
+                var urls = await GetUrls(homePage);
+                categoryUrls.Add(category, urls.ToList());
+            }
+        }
+    }
+
+    private async Task<IList<string>> GetUrls(IPage homePage)
+    {
+        var urls = new List<string>();
+        var ele_btnNexts = await homePage.QuerySelectorAllAsync(
+            "//div[@class='menu-content-pagination']//ul/li[contains(@class,'ant-pagination-item')]");
+        if (ele_btnNexts.IsNotNullOrEmpty())
+        {
+            foreach (var ele_btn in ele_btnNexts)
+            {
+                await ele_btn.Click();
+                await homePage.Wait(500);
+            
+                urls.AddRange(await PerformGettingUrls(homePage));
+            }
+        }
+        else
+        {
+            urls.AddRange(await PerformGettingUrls(homePage));
+        }
+        return urls;
+    }
+
+    private async Task<IList<string>> PerformGettingUrls(IPage homePage)
+    {
+        var urls = new List<string>();
+        var ele_Links = await homePage.QuerySelectorAllAsync("//div[@class='menu-content-list--item']/a");
+        if (ele_Links.IsNotNullOrEmpty())
+        {
+            foreach (var ele_link in ele_Links)
+            {
+                var articleUrl = await ele_link.GetAttributeAsync("href");
+                articleUrl = Url.Combine(LongChauUrl, articleUrl);
                 urls.Add(articleUrl);
             }
-
-            categoryUrls.Add(category, urls);
         }
+
+        return urls;
+    }
+
+    private async Task<IList<string>> PerformGettingUrlDiseaseGroup(IPage homePage)
+    {
+        IList<string> urls = new List<string>();
+        var ele_Items = await homePage.QuerySelectorAllAsync("((//h2[contains(@class,'items-center')])[4])/..//a[contains(@class,'disease-item')]");
+        if (ele_Items.IsNotNullOrEmpty())
+        {
+            foreach (var elementHandle in ele_Items)
+            {
+                var articleUrl = await elementHandle.GetAttributeAsync("href");
+                articleUrl = Url.Combine(LongChauUrl, articleUrl);
+                urls.Add(articleUrl);
+            }
+        }
+
+        return urls;
     }
 
     private async Task GetUrlDiseaseGroup(IPage homePage, Dictionary<string, List<string>> categoryUrls)
     {
-        var ele_Groups = await homePage.QuerySelectorAllAsync("//div[@id='benh-desktop']//div[contains(@class,'title')]/h3");
-        // a[contains(text(),'Xem Thêm') or contains(text(),'Xem thêm') and boolean(@style) = false]
-        var loadMoreBtn = "//../..//ul//a[(contains(text(),'Xem Thêm') or contains(text(),'Xem thêm') or contains(text(),'xem thêm')) and boolean(@style) = false]";
-            
-        foreach (var ele_Group in ele_Groups)
+        var ele_groups = await homePage.QuerySelectorAllAsync("((//h2[contains(@class,'items-center')])[4])/..//div[@class='ant-space-item']");
+        if (ele_groups.IsNotNullOrEmpty())
         {
-            var category = await ele_Group.InnerTextAsync();
-            await ele_Group.Click();
-            await homePage.Wait(500);
-            var ele_LoadMore = await ele_Group.QuerySelectorAsync(loadMoreBtn);
-            if (ele_LoadMore is not null)
+            foreach (var eleGroup in ele_groups)
             {
-                while (ele_LoadMore is not null)
+                await eleGroup.Click();
+                await homePage.Wait(1000);
+                var ele_category = await eleGroup.QuerySelectorAsync("//span/p");
+                var category = await ele_category.InnerTextAsync();
+                category = $"{"Nhóm bệnh chuyên khoa"} -> {category}";
+                var ele_btnNexts = await homePage.QuerySelectorAllAsync("((//h2[contains(@class,'items-center')])[4])/..//li[contains(@class,'ant-pagination-item')]");
+                if (ele_btnNexts.IsNotNullOrEmpty())
                 {
-                    await ele_LoadMore.Click();
-                    await homePage.Wait(500);
-                    ele_LoadMore = await ele_Group.QuerySelectorAsync(loadMoreBtn);
+                    var urls = new List<string>();
+                    foreach (var eleBtnNext in ele_btnNexts)
+                    {
+                        await eleBtnNext.Click();
+                        await homePage.Wait(1000);
+                        urls.AddRange(await PerformGettingUrlDiseaseGroup(homePage));
+                    }
+                    
+                    categoryUrls.Add(category, urls.ToList());
+                }
+                else
+                {
+                    var urls = await PerformGettingUrlDiseaseGroup(homePage);
+                    categoryUrls.Add(category, urls.ToList());
                 }
             }
-
-            var ele_Urls = await ele_Group.QuerySelectorAllAsync("//../..//ul//a[boolean(contains(text(),'Xem thêm')) = false and boolean(contains(text(),'Xem Thêm')) = false and boolean(contains(text(),'xem thêm')) = false]");
-            var urls = new List<string>();
-            foreach (var ele_Url in ele_Urls)
-            {
-                var url = await ele_Url.GetAttributeAsync("href");
-                urls.Add(url);
-            }
-
-            categoryUrls.Add(category, urls);
         }
     }
 
     private async Task GetUrlSeasonalDisease(IPage homePage, Dictionary<string, List<string>> categoryUrls)
     {
-        var ele_Urls = await homePage.QuerySelectorAllAsync("//h2[text()='Bệnh theo mùa']/..//a");
+        var ele_Urls = await homePage.QuerySelectorAllAsync("//h2[contains(text(),'Bệnh theo mùa')]/..//a[contains(@class,'text-text-link')]");
         var urls = new List<string>();
         foreach (var ele_Url in ele_Urls)
         {
             var url = await ele_Url.GetAttributeAsync("href");
+            url = Url.Combine(LongChauUrl, url);
             urls.Add(url);
         }
 
@@ -317,10 +363,13 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 
     private async Task GetUrlCommonDiseases(string category, IPage homePage, PlaywrightContext context, Dictionary<string, List<string>> categoryUrls)
     {
-        var ele = await homePage.QuerySelectorAsync($"//h3[text()='{category}']/..");
+        var subCategory = $"Bệnh theo đối tượng -> {category}";
+        var subUrls = new List<string>();
+        var ele = await homePage.QuerySelectorAsync($"//h3[text()='{category}']/../..//div[@class='mt-auto']/a");
         if (ele is not null)
         {
             var url = await ele.GetAttributeAsync("href");
+            url = Url.Combine(LongChauUrl, url);
 
             var page = await context.BrowserContext.NewPageAsync();
             await page.UnloadResource();
@@ -329,16 +378,22 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
             {
                 await page.GotoAsync(url);
                 await page.Wait();
-
-                var elements = await page.QuerySelectorAllAsync("//div[@class='list-item']/a");
-                var subCategory = $"Bệnh thường gặp -> {category}";
-                var subUrls = new List<string>();
-                foreach (var elementHandle in elements)
+                
+                var ele_btnNexts = await page.QuerySelectorAllAsync("//li[contains(@class,'ant-pagination-item')]");
+                if (ele_btnNexts.IsNotNullOrEmpty())
                 {
-                    var subUrl = await elementHandle.GetAttributeAsync("href");
-                    subUrls.Add(subUrl);
+                    foreach (var elementHandle in ele_btnNexts)
+                    {
+                        await elementHandle.Click();
+                        await page.Wait(500);
+            
+                        subUrls.AddRange(await PerformGetSubUrlCommonDiseases(page));
+                    }
                 }
-
+                else
+                {
+                    subUrls.AddRange(await PerformGetSubUrlCommonDiseases(page));
+                }
                 categoryUrls.Add(subCategory, subUrls);
             }
             catch (Exception e)
@@ -350,6 +405,22 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
                 await page.CloseAsync();
             }
         }
+
+        
+    }
+
+    private async Task<IList<string>> PerformGetSubUrlCommonDiseases(IPage homePage)
+    {
+        var subUrls = new List<string>();
+        var elements = await homePage.QuerySelectorAllAsync("//li[@class='cate-item']/a");
+     
+        foreach (var elementHandle in elements)
+        {
+            var subUrl = await elementHandle.GetAttributeAsync("href");
+            subUrl = Url.Combine(LongChauUrl, subUrl);
+            subUrls.Add(subUrl);
+        }
+        return subUrls;
     }
 
     #endregion
@@ -509,7 +580,7 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 
     private DateTime GetArticleCreatedAt(string articleTime)
     {
-        articleTime = articleTime.Replace("ngày", string.Empty)
+        articleTime = articleTime.Replace("ngày", string.Empty).Replace("Ngày", string.Empty)
             .Replace("Thứ Hai", string.Empty)
             .Replace("Thứ Ba", string.Empty)
             .Replace("Thứ Tư", string.Empty)
