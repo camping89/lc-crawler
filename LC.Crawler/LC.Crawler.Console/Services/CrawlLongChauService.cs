@@ -15,14 +15,14 @@ namespace LC.Crawler.Console.Services;
 
 public class CrawlLongChauService : CrawlLCEcommerceBaseService
 {
-    private const string LongChauUrl = "https://nhathuoclongchau.com/";
+    private const string LongChauUrl = "https://nhathuoclongchau.com.vn";
 
     // Example: https://nhathuoclongchau.com/filter/comments?productId=20580&type=desc&page=2
     private const string LoadCommentApi = "comments?skipCount";
 
     // Example https://nhathuoclongchau.com/load-more-reply?id=54038&type=comment&page=2
     private const string LoadMoreReplyApi = "load-more-reply";
-    private const string BrandThuocUrl = "https://nhathuoclongchau.com/thuoc";
+    private const string BrandThuocUrl = "https://nhathuoclongchau.com.vn/thuoc";
     private const string BrandThuocName = "thuoc";
 
     private const string CategoryApiUrl =
@@ -73,7 +73,6 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
                 Url = brandTotalProduct
             });
         }
-
         return ecommercePayload;
     }
 
@@ -454,19 +453,13 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
     private async Task<List<string>> GetProductUrlByApi(CrawlEcommerceProductPayload crawlEcommerceProductPayload)
     {
-        var category = crawlEcommerceProductPayload.Url.Replace(LongChauUrl, string.Empty);
+        var category = crawlEcommerceProductPayload.Url.Replace(LongChauUrl, string.Empty).Trim('/');
         var productUrls = new ConcurrentBag<string>();
         var skipCount = 0;
         while (true)
         {
-            
-            var isThuocPage = crawlEcommerceProductPayload.Url.Contains($"/{BrandThuocName}/");
             var client = new RestClient(CategoryApiUrl);
             var request = new RestRequest();
-            if (isThuocPage)
-            {
-                category = Url.Combine(BrandThuocName, category);
-            }
 
             request.AddJsonBody(new LCApiRequest(skipCount, 50, new List<string>
             {
