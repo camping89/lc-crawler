@@ -175,8 +175,8 @@ namespace LC.Crawler.Core.Playwrights
              bool headless = true)
         {
             CreateTempFolder();
-            var loadExtensionPath = Environment.ExpandEnvironmentVariables(ExtensionPath);
-            loadExtensionPath = Directory.GetDirectories(loadExtensionPath).First();
+            // var loadExtensionPath = Environment.ExpandEnvironmentVariables(ExtensionPath);
+            // loadExtensionPath = Directory.GetDirectories(loadExtensionPath).First();
             var browserTypeLaunchOptions = new BrowserTypeLaunchOptions
             {
                 Channel = "chrome",
@@ -196,7 +196,7 @@ namespace LC.Crawler.Core.Playwrights
                     "--log-level=3",
                     "--disable-notifications",
                     "--unhandled-rejections=strict",
-                    $"--load-extension={loadExtensionPath}"
+                    // $"--load-extension={loadExtensionPath}"
                 },
                 IgnoreDefaultArgs = new List<string>
                 {

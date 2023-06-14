@@ -14,9 +14,16 @@ public abstract class CrawlLCEcommerceBaseService : BaseService, ICrawlLCService
     public async Task<CrawlResult?> Execute(CrawlerDataSourceItem item, CrawlerCredentialEto credential)
     {
         InitLogConfig(credential);
-        
-        var             browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, string.Empty, 0, 
-            string.Empty, string.Empty, new List<CrawlerAccountCookie>(), false);
+
+        if (item.Url.Contains("nhathuoclongchau"))
+        {
+            var crawlerProxy = GetCrawlProxy();
+            credential.CrawlerProxy = crawlerProxy;
+            CrawlerProxy = crawlerProxy;
+        }
+
+        var             browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, credential.CrawlerProxy.Ip, credential.CrawlerProxy.Port, 
+            credential.CrawlerProxy.Username, credential.CrawlerProxy.Password, new List<CrawlerAccountCookie>(), false);
         await using var browser        = browserContext.Browser;
         try
         {

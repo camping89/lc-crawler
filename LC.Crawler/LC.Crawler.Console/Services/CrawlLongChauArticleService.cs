@@ -15,6 +15,7 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 {
     private const string ArticleBaseSlug = "bai-viet";
     private const string LongChauUrl = "https://nhathuoclongchau.com.vn/";
+    protected CrawlerProxy CrawlerProxy = new();
 
     protected override async Task<CrawlArticlePayload> GetCrawlArticlePayload(IPage page, string url)
     {
@@ -28,10 +29,8 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
     private async Task GetMainArticleLinks(string url, List<ArticlePayload> articlePayloads)
     {
         var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot,
-            string.Empty,
-            0,
-            string.Empty,
-            string.Empty,
+            CrawlerProxy.Ip, CrawlerProxy.Port,
+            CrawlerProxy.Username, CrawlerProxy.Password,
             new List<CrawlerAccountCookie>(),
             false);
 
@@ -106,10 +105,8 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
             await categoryUrl.Value.Partition(5).ParallelForEachAsync(async urls =>
             {
                 var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot,
-                    string.Empty,
-                    0,
-                    string.Empty,
-                    string.Empty,
+                    CrawlerProxy.Ip, CrawlerProxy.Port,
+                    CrawlerProxy.Username, CrawlerProxy.Password,
                     new List<CrawlerAccountCookie>(),
                     false);
                 using (browserContext.Playwright)
@@ -193,10 +190,8 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
         var categoryUrls = new Dictionary<string, List<string>>();
 
         var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot,
-            string.Empty,
-            0,
-            string.Empty,
-            string.Empty,
+            CrawlerProxy.Ip, CrawlerProxy.Port,
+            CrawlerProxy.Username, CrawlerProxy.Password,
             new List<CrawlerAccountCookie>(),
             false);
         using (browserContext.Playwright)
@@ -429,10 +424,8 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
     {
         var articlePayloads = new List<ArticlePayload>();
         var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot,
-            string.Empty,
-            0,
-            string.Empty,
-            string.Empty,
+            CrawlerProxy.Ip, CrawlerProxy.Port,
+            CrawlerProxy.Username, CrawlerProxy.Password,
             new List<CrawlerAccountCookie>(),
             false);
 
@@ -597,8 +590,8 @@ public class CrawlLongChauArticleService : CrawlLCArticleBaseService
 
     private async Task<List<ArticlePayload>> CrawlLCArticles(List<ArticlePayload> articlePayloads)
     {
-        var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, string.Empty, 0,
-            string.Empty, string.Empty, new List<CrawlerAccountCookie>(), false);
+        var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, CrawlerProxy.Ip, CrawlerProxy.Port,
+            CrawlerProxy.Username, CrawlerProxy.Password, new List<CrawlerAccountCookie>(), false);
         using (browserContext.Playwright)
         {
             await using (browserContext.Browser)

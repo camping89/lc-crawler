@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using LC.Crawler.Client.Configurations;
 using LC.Crawler.Client.Entities;
+using LC.Crawler.Core.Extensions;
 using log4net;
 using log4net.Config;
 using Microsoft.Extensions.Configuration;
@@ -12,12 +13,33 @@ public class BaseService
     protected GlobalConfig GlobalConfig { get; init; }
     private ILog Logger { get; set; }
     
+    protected CrawlerProxy CrawlerProxy = new();
+    
     protected BaseService()
     {
         var config = InitConfig();
         GlobalConfig = config;
         Logger = LogManager.GetLogger(typeof(Program));
     }
+    
+    protected CrawlerProxy GetCrawlProxy()
+    {
+        string[] lines = File.ReadAllLines(@"D:\Workspace\lc-crawler\proxy.txt");
+        var random = new Random();
+        int index = random.Next(lines.Length);
+        var line = lines[index];
+        var listItems = line.Split(':');
+        var crawlerProxy = new CrawlerProxy
+        {
+            Ip = listItems[0],
+            Port = listItems[1].ToIntOrDefault(),
+            Username = listItems[2],
+            Password = listItems[3]
+        };
+
+        return crawlerProxy;
+    }
+
     
     protected void InitLogConfig(CrawlerCredentialEto credential)
     {

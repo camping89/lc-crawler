@@ -27,7 +27,7 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
 
     private const string CategoryApiUrl =
         "https://api.nhathuoclongchau.com.vn/lccus/search-product-service/api/products/ecom/product/search/cate";
-
+    
     protected override async Task<CrawlEcommercePayload> GetCrawlEcommercePayload(IPage page, string url)
     {
         var ecommercePayload = new CrawlEcommercePayload
@@ -126,8 +126,8 @@ public class CrawlLongChauService : CrawlLCEcommerceBaseService
     {
         await urls.Partition(GlobalConfig.CrawlConfig.Crawl_BatchSize).ParallelForEachAsync(async batch =>
         {
-            var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, string.Empty, 0,
-                string.Empty, string.Empty, new List<CrawlerAccountCookie>(), false);
+            var browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, CrawlerProxy.Ip, CrawlerProxy.Port,
+                CrawlerProxy.Username, CrawlerProxy.Password, new List<CrawlerAccountCookie>(), false);
 
             using (browserContext.Playwright)
             {

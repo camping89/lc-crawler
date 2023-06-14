@@ -19,32 +19,31 @@ static class Program
     {
         // Rabbit MQ
 
-        using var application = AbpApplicationFactory.Create<CrawlerModule>(options => { options.UseAutofac(); });
-        await application.InitializeAsync();
-        var autoResetEvent = new AutoResetEvent(false);
-        autoResetEvent.WaitOne();
+        // using var application = AbpApplicationFactory.Create<CrawlerModule>(options => { options.UseAutofac(); });
+        // await application.InitializeAsync();
+        // var autoResetEvent = new AutoResetEvent(false);
+        // autoResetEvent.WaitOne();
 
 
         // DEBUG code
-        // var crawlFaireService = new CrawlAladinArticleService();
-        // var crawlResult = await crawlFaireService.Execute(new CrawlerDataSourceItem
-        // {
-        //     DataSourceType = DataSourceType.Website,
-        //     Url = "https://aladin.com.vn"
-        // }, new CrawlerCredentialEto
-        // {
-        //     CrawlerAccount = new CrawlerAccount
-        //     {
-        //         Email = "samuel.lim@reebonz.com",
-        //         Password = "samtcsp7bdq",
-        //         Cookies = new List<CrawlerAccountCookie>()
-        //         
-        //     }
-        // });
-        // await using var file = File.CreateText(@"C:\path.txt");
-        // var serializer = new JsonSerializer();
-        // //serialize object directly into file stream
-        // serializer.Serialize(file, crawlResult.CrawlArticlePayload);
+        var crawlFaireService = new CrawlLongChauService();
+        var crawlResult = await crawlFaireService.Execute(new CrawlerDataSourceItem
+        {
+            DataSourceType = DataSourceType.Website,
+            Url = "https://nhathuoclongchau.com.vn"
+        }, new CrawlerCredentialEto
+        {
+            CrawlerAccount = new CrawlerAccount
+            {
+                Email = "samuel.lim@reebonz.com",
+                Password = "samtcsp7bdq",
+                Cookies = new List<CrawlerAccountCookie>()
+            }
+        });
+        await using var file = File.CreateText(@"C:\path.txt");
+        var serializer = new JsonSerializer();
+        //serialize object directly into file stream
+        serializer.Serialize(file, crawlResult.CrawlArticlePayload);
         
         // using var application = AbpApplicationFactory.Create<CrawlerModule>(options => { options.UseAutofac(); });
         // application.Initialize();
