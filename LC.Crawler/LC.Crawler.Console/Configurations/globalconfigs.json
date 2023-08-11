@@ -13,7 +13,7 @@
       "ScrollTimeout": 5000,
       "Crawl_MaxThread": 10,
       "Crawl_BatchSize": 100,
-      "ValidateArticleByDateTime": true,
+      "ValidateArticleByDateTime": false,
       "TotalArticles": 100,
       "DaysIntervalArticles": 1200,
       "SucKhoeDoiSongConfig": {
@@ -238,529 +238,443 @@
         "Categories": [
           {
             "Name": "Chân dung bác sĩ",
-            "Url": "https://alobacsi.com/chan-dung-bac-si-c1007/p-{0}/"
+            "Url": "https://alobacsi.com/chan-dung-bac-si"
           },
           {
             "Name": "Video",
-            "Url": "https://alobacsi.com/video-c280/p-{0}/"
+            "Url": "https://alobacsi.com/video"
           },
           {
             "Name": "Podcast",
-            "Url": "https://alobacsi.com/tin-y-te-c308/p-{0}/"
+            "Url": "https://alobacsi.com/podcast"
           },
           {
-            "Name": "Giao lưu trực tuyến",
-            "Url": "https://alobacsi.com/giao-luu-truc-tuyen-c355/p-{0}/",
+            "Name": "Tin tức",
+            "Url": "https://alobacsi.com/tin-tuc"
+          },
+          {
+            "Name": "Chat với Bác sĩ",
+            "Url": "https://alobacsi.com/chat-voi-bac-si"
+          },
+          {
+            "Name": "Cẩm nang sức khỏe",
+            "Url": "https://alobacsi.com/cam-nang-suc-khoe",
             "SubCategories": [
               {
-                "Name": "Bệnh di truyền",
-                "Url": "https://alobacsi.com/benh-di-truyen-c956/p-{0}/"
+                "Name": "Sống khoẻ",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/song-khoe"
               },
               {
-                "Name": "Bệnh tình dục",
-                "Url": "https://alobacsi.com/benh-tinh-duc-c957/p-{0}/"
+                "Name": "Dinh Dưỡng",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/dinh-duong"
               },
               {
-                "Name": "Bệnh truyền nhiễm",
-                "Url": "https://alobacsi.com/benh-truyen-nhiem-c955/p-{0}/"
+                "Name": "Sức khoẻ Trẻ em",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-tre-em"
               },
               {
-                "Name": "Cảm cúm",
-                "Url": "https://alobacsi.com/cam-cum-c1006/p-{0}/"
+                "Name": "Sức khoẻ Phụ nữ",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-phu-nu"
               },
               {
-                "Name": "Cấy ghép tạng",
-                "Url": "https://alobacsi.com/cay-ghep-tang-c954/p-{0}/"
+                "Name": "Gợi ý cho bạn",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/goi-y-cho-ban"
               },
               {
-                "Name": "Chấn thương chỉnh hình",
-                "Url": "https://alobacsi.com/chan-thuong-chinh-hinh-c1005/p-{0}/"
+                "Name": "Mang thai",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/mang-thai"
               },
               {
-                "Name": "Chẩn đoán hình ảnh - Giải phẫu bệnh",
-                "Url": "https://alobacsi.com/chan-doan-hinh-anh-giai-phau-benh-c947/p-{0}/"
+                "Name": "Sức khoẻ Nam giới",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-nam-gioi"
               },
               {
-                "Name": "Cơ xương khớp",
-                "Url": "https://alobacsi.com/co-xuong-khop-c941/p-{0}/"
+                "Name": "Sức khoẻ Tinh thần",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-tinh-than"
               },
               {
-                "Name": "COVID-19",
-                "Url": "https://alobacsi.com/covid-19-c958/p-{0}/"
+                "Name": "Bệnh Não - Thần kinh & Đột quỵ",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-nao-than-kinh-dot-quy"
               },
               {
-                "Name": "Da - Tóc - Da liễu",
-                "Url": "https://alobacsi.com/da-toc-da-lieu-c1003/p-{0}/"
+                "Name": "Bệnh Cơ Xương Khớp",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-co-xuong-khop"
               },
               {
-                "Name": "Dinh dưỡng",
-                "Url": "https://alobacsi.com/dinh-duong-c942/p-{0}/"
+                "Name": "Làm đẹp",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/lam-dep"
               },
               {
-                "Name": "Dược",
-                "Url": "https://alobacsi.com/duoc-c950/p-{0}/"
+                "Name": "Sức khoẻ Giới tính",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-gioi-tinh"
               },
               {
-                "Name": "Gan Mật Tụy ",
-                "Url": "https://alobacsi.com/gan-mat-tuy-c1000/p-{0}/"
+                "Name": "Sức khoẻ Người Cao tuổi",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-nguoi-cao-tuoi"
               },
               {
-                "Name": "Hô hấp",
-                "Url": "https://alobacsi.com/ho-hap-c933/p-{0}/"
+                "Name": "Thể thao lành mạnh",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/the-thao-lanh-manh"
               },
               {
-                "Name": "Huyết học ",
-                "Url": "https://alobacsi.com/huyet-hoc-c944/p-{0}/"
+                "Name": "Sức khoẻ Răng Miệng",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-rang-mieng"
               },
               {
-                "Name": "Kiểm soát nhiễm khuẩn",
-                "Url": "https://alobacsi.com/kiem-soat-nhiem-khuan-c949/p-{0}/"
+                "Name": "Sức khoẻ Cộng đồng",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/suc-khoe-cong-dong"
               },
               {
-                "Name": "Lão khoa",
-                "Url": "https://alobacsi.com/lao-khoa-c929/p-{0}/"
+                "Name": "Da liễu - Dị ứng",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/da-lieu-di-ung"
               },
               {
-                "Name": "Mắt",
-                "Url": "https://alobacsi.com/mat-c938/p-{0}/"
+                "Name": "Bệnh Nhãn khoa",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-nhan-khoa"
               },
               {
-                "Name": "Nam khoa ",
-                "Url": "https://alobacsi.com/nam-khoa-c928/p-{0}/"
+                "Name": "Bệnh Tai Mũi Họng",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-tai-mui-hong"
               },
               {
-                "Name": "Ngoại Thần kinh",
-                "Url": "https://alobacsi.com/ngoai-than-kinh-c1002/p-{0}/"
+                "Name": "Bệnh Hô hấp",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-ho-hap"
               },
               {
-                "Name": "Nhi khoa",
-                "Url": "https://alobacsi.com/nhi-khoa-c926/p-{0}/"
+                "Name": "Bệnh Tiêu hoá - Gan Mật",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-tieu-hoa-gan-mat"
               },
               {
-                "Name": "Nội Thần kinh ",
-                "Url": "https://alobacsi.com/than-kinh-dau-dau-c952/p-{0}/"
+                "Name": "Bệnh Tim mạch",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-tim-mach"
               },
               {
                 "Name": "Nội tiết - Tiểu đường",
                 "Url": "https://alobacsi.com/noi-tiet-tieu-duong-c940/p-{0}/"
               },
               {
-                "Name": "Nội tổng hợp ",
-                "Url": "https://alobacsi.com/noi-tong-hop-c925/p-{0}/"
+                "Name": "Bệnh Truyền nhiễm",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-truyen-nhiem"
               },
               {
-                "Name": "Phổi",
-                "Url": "https://alobacsi.com/phoi-c934/p-{0}/"
+                "Name": "Bệnh Nội tiết",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-noi-tiet"
               },
               {
-                "Name": "Răng hàm mặt",
-                "Url": "https://alobacsi.com/rang-ham-mat-c932/p-{0}/"
+                "Name": "Bệnh Thận - Tiết niệu",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/benh-than-tiet-nieu"
               },
               {
-                "Name": "Sản phụ khoa",
-                "Url": "https://alobacsi.com/san-phu-khoa-c927/p-{0}/"
-              },
-              {
-                "Name": "Sinh hóa - Vi sinh",
-                "Url": "https://alobacsi.com/sinh-hoa-vi-sinh-c946/p-{0}/"
-              },
-              {
-                "Name": "Tai Mũi họng",
-                "Url": "https://alobacsi.com/tai-mui-hong-c931/p-{0}/"
-              },
-              {
-                "Name": "Tâm lý - Tâm thần",
-                "Url": "https://alobacsi.com/than-kinh-tam-than-kinh-c930/p-{0}/"
-              },
-              {
-                "Name": "Thẩm mỹ",
-                "Url": "https://alobacsi.com/tham-my-c937/p-{0}/"
-              },
-              {
-                "Name": "Thận - Tiết Niệu",
-                "Url": "https://alobacsi.com/than-tiet-nieu-c936/p-{0}/"
-              },
-              {
-                "Name": "Tiêu hóa ",
-                "Url": "https://alobacsi.com/tieu-hoa-gan-mat-c935/p-{0}/"
-              },
-              {
-                "Name": "Tim mạch ",
-                "Url": "https://alobacsi.com/tim-mach-c939/p-{0}/"
-              },
-              {
-                "Name": "Ung thư - Y học hạt nhân",
-                "Url": "https://alobacsi.com/ung-thu-y-hoc-hat-nhan-c943/p-{0}/"
-              },
-              {
-                "Name": "Vật lý trị liệu ",
-                "Url": "https://alobacsi.com/vat-ly-tri-lieu-c945/p-{0}/"
+                "Name": "Ung thư - Ung bướu",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/ung-thu-ung-buou"
               },
               {
                 "Name": "Y học cổ truyền",
-                "Url": "https://alobacsi.com/y-hoc-co-truyen-c1001/p-{0}/"
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/y-hoc-co-truyen"
               },
               {
-                "Name": "Y học thể thao",
-                "Url": "https://alobacsi.com/y-hoc-the-thao-c951/p-{0}/"
-              },
-              {
-                "Name": "Đột quỵ",
-                "Url": "https://alobacsi.com/dot-quy-c959/p-{0}/"
+                "Name": "An toàn dùng thuốc",
+                "Url": "https://alobacsi.com/cam-nang-suc-khoe/an-toan-dung-thuoc"
               }
             ]
           },
           {
-            "Name": "Bệnh thường gặp",
-            "Url": "https://alobacsi.com/benh-thuong-gap-c161/p-{0}/",
+            "Name": "Bệnh",
+            "Url": "https://alobacsi.com/benh",
             "SubCategories": [
               {
-                "Name": "Trẻ em",
-                "Url": "https://alobacsi.com/tre-em-c338/p-{0}/"
-              },
-              {
-                "Name": "Tuổi Teen",
-                "Url": "https://alobacsi.com/benh-tuoi-teen-c340/p-{0}/"
-              },
-              {
-                "Name": "Phụ nữ",
-                "Url": "https://alobacsi.com/phu-nu-c336/p-{0}/",
-                "SubCategories": [
-                  {
-                    "Name": "Kinh nguyệt",
-                    "Url": "https://alobacsi.com/kinh-nguyet-c595/p-{0}/"
-                  },
-                  {
-                    "Name": "Ung thư vú",
-                    "Url": "https://alobacsi.com/ung-thu-vu-c538/p-{0}/"
-                  },
-                  {
-                    "Name": "Tiền mãn kinh",
-                    "Url": "https://alobacsi.com/tien-man-kinh-c800/p-{0}/"
-                  },
-                  {
-                    "Name": "Mang thai hộ",
-                    "Url": "https://alobacsi.com/mang-thai-ho-c811/p-{0}/"
-                  }
-                ]
-              },
-              {
-                "Name": "Giảm đau hiệu quả",
-                "Url": "https://alobacsi.com/giam-dau-hieu-qua/p-{0}/"
-              },
-              {
-                "Name": "Mẹ & Con",
-                "Url": "https://alobacsi.com/me-con-c272/p-{0}/",
-                "SubCategories": [
-                  {
-                    "Name": "Sắp có baby",
-                    "Url": "https://alobacsi.com/sap-co-baby-c315/p-{0}/"
-                  },
-                  {
-                    "Name": "Bầu bì",
-                    "Url": "https://alobacsi.com/bau-bi-c312/p-{0}/"
-                  },
-                  {
-                    "Name": "Sau sinh",
-                    "Url": "https://alobacsi.com/sau-sinh-c274/p-{0}/"
-                  }
-                ]
-              },
-              {
-                "Name": "Nam giới",
-                "Url": "https://alobacsi.com/nam-gioi-c337/p-{0}/",
-                "SubCategories": [
-                  {
-                    "Name": "Tuyến tiền liệt",
-                    "Url": "https://alobacsi.com/tuyen-tien-liet-c478/p-{0}/"
-                  },
-                  {
-                    "Name": "Hẹp bao quy đầu",
-                    "Url": "https://alobacsi.com/hep-bao-quy-dau-c479/p-{0}/"
-                  }
-                ]
-              },
-              {
-                "Name": "Bệnh ho ở trẻ em",
-                "Url": "https://alobacsi.com/benh-ho-o-tre-em/p-{0}/"
+                "Name": "Nhi khoa",
+                "Url": "https://alobacsi.com/benh/nhi-khoa"
               },
               {
                 "Name": "Lão khoa",
-                "Url": "https://alobacsi.com/lao-khoa-c339/p-{0}/"
+                "Url": "https://alobacsi.com/benh/lao-khoa"
               },
               {
-                "Name": "Bệnh Nghề nghiệp",
-                "Url": "https://alobacsi.com/benh-nghe-nghiep-c960/p-{0}/"
+                "Name": "Hô hấp",
+                "Url": "https://alobacsi.com/benh/ho-hap"
               },
               {
-                "Name": "Cảm cúm",
-                "Url": "https://alobacsi.com/cam-cum-c995/p-{0}/"
+                "Name": "Tai Mũi Họng",
+                "Url": "https://alobacsi.com/benh/tai-mui-hong"
               },
               {
-                "Name": "Cấy ghép tạng",
-                "Url": "https://alobacsi.com/cay-ghep-tang-c481/p-{0}/"
-              },
-              {
-                "Name": "Cơ - Xương - Khớp",
-                "Url": "https://alobacsi.com/co-xuong-khop-c183/p-{0}/"
-              },
-              {
-                "Name": "Chấn thương chỉnh hình",
-                "Url": "https://alobacsi.com/chan-thuong-chinh-hinh-c996/p-{0}/"
-              },
-              {
-                "Name": "Da - Tóc - Da liễu",
-                "Url": "https://alobacsi.com/da-toc-da-lieu-c188/p-{0}/"
-              },
-              {
-                "Name": "Di truyền",
-                "Url": "https://alobacsi.com/benh-di-truyen-c190/p-{0}/"
-              },
-              {
-                "Name": "Dị ứng - Mề đay",
-                "Url": "https://alobacsi.com/di-ung-me-day-c426/p-{0}/"
-              },
-              {
-                "Name": "Gan Mật Tụy ",
-                "Url": "https://alobacsi.com/gan-mat-tuy-c997/p-{0}/"
-              },
-              {
-                "Name": "Giải độc - Chống độc",
-                "Url": "https://alobacsi.com/giai-doc-chong-doc-c921/p-{0}/"
-              },
-              {
-                "Name": " Hô hấp",
-                "Url": "https://alobacsi.com/ho-hap-c172/p-{0}/"
-              },
-              {
-                "Name": "Huyết học",
-                "Url": "https://alobacsi.com/huyet-hoc-c191/p-{0}/"
+                "Name": "Răng Hàm Mặt",
+                "Url": "https://alobacsi.com/benh/rang-ham-mat"
               },
               {
                 "Name": "Mắt",
-                "Url": "https://alobacsi.com/mat-c184/p-{0}/"
+                "Url": "https://alobacsi.com/benh/mat"
               },
               {
-                "Name": "Ngoại khoa",
-                "Url": "https://alobacsi.com/ngoai-khoa-c399/p-{0}/"
+                "Name": "Ung bướu",
+                "Url": "https://alobacsi.com/benh/ung-buou"
+              },
+              {
+                "Name": "Huyết học",
+                "Url": "https://alobacsi.com/benh/huyet-hoc"
+              },
+              {
+                "Name": "Tim mạch - Huyết áp",
+                "Url": "https://alobacsi.com/benh/tim-mach-huyet-ap"
+              },
+              {
+                "Name": "Phẫu thuật Tim - Lồng ngực",
+                "Url": "https://alobacsi.com/benh/phau-thuat-tim-long-nguc"
               },
               {
                 "Name": "Nội tiết - Tiểu đường",
-                "Url": "https://alobacsi.com/noi-tiet-c332/p-{0}/"
+                "Url": "https://alobacsi.com/benh/noi-tiet-tieu-duong"
               },
               {
-                "Name": "Nội Thần kinh ",
-                "Url": "https://alobacsi.com/than-kinh-dau-dau-c193/p-{0}/"
+                "Name": "Thận - Tiết niệu",
+                "Url": "https://alobacsi.com/benh/than-tiet-nieu"
+              },
+              {
+                "Name": "Ngoại Niệu - Ghép thận",
+                "Url": "https://alobacsi.com/benh/ngoai-nieu-ghep-than"
+              },
+              {
+                "Name": "Nam khoa",
+                "Url": "https://alobacsi.com/benh/nam-khoa"
+              },
+              {
+                "Name": "Bệnh Nhiệt đới",
+                "Url": "https://alobacsi.com/benh/benh-nhiet-doi"
+              },
+              {
+                "Name": "Dinh dưỡng",
+                "Url": "https://alobacsi.com/benh/dinh-duong"
+              },
+              {
+                "Name": "Nội Thần kinh",
+                "Url": "https://alobacsi.com/benh/noi-than-kinh"
+              },
+              {
+                "Name": "Can thiệp Thần kinh - Đột quỵ",
+                "Url": "https://alobacsi.com/benh/can-thiep-than-kinh-dot-quy"
               },
               {
                 "Name": "Ngoại Thần kinh",
-                "Url": "https://alobacsi.com/ngoai-than-kinh-c965/p-{0}/"
+                "Url": "https://alobacsi.com/benh/ngoai-than-kinh"
               },
               {
-                "Name": "Phổi",
-                "Url": "https://alobacsi.com/phoi-c966/p-{0}/"
+                "Name": "Tâm lý - Tâm thần",
+                "Url": "https://alobacsi.com/benh/tam-ly-tam-than"
               },
               {
-                "Name": "Răng - Nha khoa",
-                "Url": "https://alobacsi.com/rang-ham-mat-c186/p-{0}/"
+                "Name": "Sản phụ khoa",
+                "Url": "https://alobacsi.com/benh/san-phu-khoa"
               },
               {
-                "Name": "Hàm - Mặt",
-                "Url": "https://alobacsi.com/ham-mat-c998/p-{0}/"
+                "Name": "Da liễu - Dị ứng",
+                "Url": "https://alobacsi.com/benh/da-lieu-di-ung"
               },
               {
-                "Name": "Tai - Mũi - Họng",
-                "Url": "https://alobacsi.com/tai-mui-hong-c185/p-{0}/"
-              },
-              {
-                "Name": "Tâm lý - Tâm thần ",
-                "Url": "https://alobacsi.com/tam-ly-c539/p-{0}/"
-              },
-              {
-                "Name": "Thận ",
-                "Url": "https://alobacsi.com/than-tiet-nieu-c175/p-{0}/"
-              },
-              {
-                "Name": "Tiết Niệu ",
-                "Url": "https://alobacsi.com/tiet-nieu-c999/p-{0}/"
-              },
-              {
-                "Name": "Tiêu hóa ",
-                "Url": "https://alobacsi.com/tieu-hoa-gan-mat-c834/p-{0}/",
-                "SubCategories": [
-                  {
-                    "Name": "Tư vấn tiêu hoá cùng ThS.BS Trần Ngọc Lưu Phương",
-                    "Url": "https://alobacsi.com/tu-van-tieu-hoa-cung-thsbs-tran-ngoc-luu-phuong-c922/p-{0}/"
-                  },
-                  {
-                    "Name": "Tiêu hóa",
-                    "Url": "https://alobacsi.com/tieu-hoa-c173/p-{0}/",
-                    "SubCategories": [
-                      {
-                        "Name": "Ung thư đại tràng",
-                        "Url": "https://alobacsi.com/ung-thu-dai-trang-c516/p-{0}/"
-                      }
-                    ]
-                  },
-                  {
-                    "Name": "Gan",
-                    "Url": "https://alobacsi.com/gan-c484/p-{0}/"
-                  },
-                  {
-                    "Name": "Hành trình chăm sóc gan",
-                    "Url": "https://alobacsi.com/hanh-trinh-cham-soc-gan-c818/p-{0}/"
-                  }
-                ]
-              },
-              {
-                "Name": "Tim mạch",
-                "Url": "https://alobacsi.com/huyet-ap-tim-mach-c333/p-{0}/"
-              },
-              {
-                "Name": " Tự miễn",
-                "Url": "https://alobacsi.com/benh-tu-mien-c981/p-{0}/"
-              },
-              {
-                "Name": "Truyền nhiễm",
-                "Url": "https://alobacsi.com/benh-truyen-nhiem-c189/p-{0}/"
-              },
-              {
-                "Name": "Ung thư",
-                "Url": "https://alobacsi.com/ung-thu-c327/p-{0}/"
-              }
-            ]
-          },
-          {
-            "Name": "Bệnh tìm kiếm nhiều",
-            "Url": "https://alobacsi.com/benh-duoc-tim-kiem-nhieu-nhat-c984/p-{0}/",
-            "SubCategories": [
-              {
-                "Name": "Bệnh dại",
-                "Url": "https://alobacsi.com/benh-dai-c712/p-{0}/"
-              },
-              {
-                "Name": "Bệnh giun - sán",
-                "Url": "https://alobacsi.com/giun-san-c739/p-{0}/"
-              },
-              {
-                "Name": "Bệnh lao phổi",
-                "Url": "https://alobacsi.com/benh-lao-c980/p-{0}/"
-              },
-              {
-                "Name": "Giảm đau hiệu quả",
-                "Url": "https://alobacsi.com/giam-dau-hieu-qua/p-{0}/"
-              },
-              {
-                "Name": "Bệnh Tình dục",
-                "Url": "https://alobacsi.com/benh-tinh-duc-c775/p-{0}/"
-              },
-              {
-                "Name": "Bệnh uốn ván",
-                "Url": "https://alobacsi.com/benh-uon-van-c985/p-{0}/"
-              },
-              {
-                "Name": "Bệnh ho ở trẻ em",
-                "Url": "https://alobacsi.com/benh-ho-o-tre-em/p-{0}/"
-              },
-              {
-                "Name": "COVID -19",
-                "Url": "https://alobacsi.com/covid-19-c971/p-{0}/"
-              },
-              {
-                "Name": "Đau đầu - mất ngủ",
-                "Url": "https://alobacsi.com/dau-dau-mat-ngu-c986/p-{0}/"
-              },
-              {
-                "Name": "Đột quỵ",
-                "Url": "https://alobacsi.com/dot-quy-c829/p-{0}/"
-              },
-              {
-                "Name": "Giời leo",
-                "Url": "https://alobacsi.com/gioi-leo-c987/p-{0}/"
-              },
-              {
-                "Name": "HIV - AIDS",
-                "Url": "https://alobacsi.com/hiv-aids-c306/p-{0}/"
+                "Name": "Phẫu thuật thẩm mỹ",
+                "Url": "https://alobacsi.com/benh/phau-thuat-tham-my"
               },
               {
                 "Name": "Hiếm muộn",
-                "Url": "https://alobacsi.com/sinh-san-nu-c544/p-{0}/"
+                "Url": "https://alobacsi.com/benh/hiem-muon"
               },
               {
-                "Name": "Rối loạn tiền đình ",
-                "Url": "https://alobacsi.com/roi-loan-tien-dinh-c990/p-{0}/"
+                "Name": "Cơ Xương Khớp",
+                "Url": "https://alobacsi.com/benh/co-xuong-khop"
               },
               {
-                "Name": "Thắc mắc \"chuyện ấy\"",
-                "Url": "https://alobacsi.com/thac-mac-chuyen-ay-c967/p-{0}/"
+                "Name": "Chấn thương chỉnh hình",
+                "Url": "https://alobacsi.com/benh/chan-thuong-chinh-hinh"
               },
               {
-                "Name": "Trào ngược ",
-                "Url": "https://alobacsi.com/trao-nguoc-c991/p-{0}/"
+                "Name": "Y học thể thao",
+                "Url": "https://alobacsi.com/benh/y-hoc-the-thao"
+              },
+              {
+                "Name": "Phục hồi chức năng - Chân tay giả",
+                "Url": "https://alobacsi.com/benh/phuc-hoi-chuc-nang-chan-tay-gia"
+              },
+              {
+                "Name": "Vật lý trị liệu",
+                "Url": "https://alobacsi.com/benh/vat-ly-tri-lieu"
+              },
+              {
+                "Name": "Tiêu hóa - Gan Mật",
+                "Url": "https://alobacsi.com/benh/tieu-hoa-gan-mat"
+              },
+              {
+                "Name": "Hậu môn - Trực tràng",
+                "Url": "https://alobacsi.com/benh/hau-mon-truc-trang"
+              },
+              {
+                "Name": "Nội tổng quát",
+                "Url": "https://alobacsi.com/benh/noi-tong-quat"
+              },
+              {
+                "Name": "Chẩn đoán hình ảnh",
+                "Url": "https://alobacsi.com/benh/nha-khoa"
+              },
+              {
+                "Name": "Tim mạch",
+                "Url": "https://alobacsi.com/benh/chan-doan-hinh-anh"
+              },
+              {
+                "Name": "Gây mê - Hồi sức",
+                "Url": "https://alobacsi.com/benh/gay-me-hoi-suc"
+              },
+              {
+                "Name": "Ngoại tổng quát",
+                "Url": "https://alobacsi.com/benh/ngoai-tong-quat"
+              },
+              {
+                "Name": "Dược khoa",
+                "Url": "https://alobacsi.com/benh/duoc-khoa"
+              },
+              {
+                "Name": "Y tế dự phòng",
+                "Url": "https://alobacsi.com/benh/y-te-du-phong"
+              },
+              {
+                "Name": "Bệnh khác",
+                "Url": "https://alobacsi.com/benh/benh-khac"
+              },
+              {
+                "Name": "Bệnh Tình dục",
+                "Url": "https://alobacsi.com/benh/benh-tinh-duc"
+              },
+              {
+                "Name": "Y học gia đình",
+                "Url": "https://alobacsi.com/benh/y-hoc-gia-dinh"
+              },
+              {
+                "Name": "Y học cổ truyền",
+                "Url": "https://alobacsi.com/benh/y-hoc-co-truyen"
+              },
+              {
+                "Name": "Xét nghiệm",
+                "Url": "https://alobacsi.com/benh/xet-nghiem"
+              },
+              {
+                "Name": "Xử lý ngộ độc",
+                "Url": "https://alobacsi.com/benh/xu-ly-ngo-doc"
+              },
+              {
+                "Name": "Lao - Phổi",
+                "Url": "https://alobacsi.com/benh/lao-phoi"
+              }
+            ]
+          },
+          {
+            "Name": "Chuyên trang sức khỏe",
+            "Url": "https://alobacsi.com/chuyen-trang-suc-khoe",
+            "SubCategories": [
+              {
+                "Name": "Tai biến - Đột quỵ",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tai-bien-dot-quy"
+              },
+              {
+                "Name": "Cơ xương khớp",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/co-xuong-khop"
+              },
+              {
+                "Name": "Vì đôi mắt khỏe",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/vi-doi-mat-khoe"
+              },
+              {
+                "Name": "Viêm mũi dị ứng",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/viem-mui-di-ung"
+              },
+              {
+                "Name": "Tầm soát miễn phí",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tam-soat-mien-phi"
+              },
+              {
+                "Name": "Giảm đau hiệu quả",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/giam-dau-hieu-qua"
+              },
+              {
+                "Name": "Hỏi đáp cùng BS Calvin Q Trịnh",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/hoi-dap-cung-bs-calvin-q-trinh"
+              },
+              {
+                "Name": "Bệnh ho ở trẻ",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/benh-ho-o-tre"
+              },
+              {
+                "Name": "Gan khỏe",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/gan-khoe"
+              },
+              {
+                "Name": "Tim mạch",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tim-mach"
+              },
+              {
+                "Name": "Đái tháo đường",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/dai-thao-duong"
               },
               {
                 "Name": "Tránh thai",
-                "Url": "https://alobacsi.com/tranh-thai-c772/p-{0}/"
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tranh-thai"
               },
               {
-                "Name": "Viêm gan A",
-                "Url": "https://alobacsi.com/viem-gan-a-c992/p-{0}/"
+                "Name": "COVID-19",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/covid-19"
               },
               {
-                "Name": "Viêm gan B",
-                "Url": "https://alobacsi.com/viem-gan-b-c1004/p-{0}/"
+                "Name": "Tai mũi họng",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tai-mui-hong"
               },
               {
-                "Name": "Viêm xoang",
-                "Url": "https://alobacsi.com/viem-gan-b-c993/p-{0}/"
+                "Name": "Dị ứng",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/di-ung"
               },
               {
-                "Name": "Viêm dạ dày HP",
-                "Url": "https://alobacsi.com/hp-da-day-c989/p-{0}/"
+                "Name": "Dinh dưỡng người cao tuổi",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/dinh-duong-nguoi-cao-tuoi"
               },
               {
-                "Name": "Sơ cấp cứu",
-                "Url": "https://alobacsi.com/so-cap-cuu-c546/p-{0}/"
+                "Name": "Huyết áp thấp",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/huyet-ap-thap"
               },
               {
-                "Name": "Sốt xuất huyết ",
-                "Url": "https://alobacsi.com/sot-xuat-huyet-ebola-c793/p-{0}/"
-              }
-            ]
-          },
-          {
-            "Name": "Dinh dưỡng",
-            "Url": "https://alobacsi.com/dinh-duong-c164/p-{0}/"
-          },
-          {
-            "Name": "Tiêm chủng - Xét nghiệm",
-            "Url": "https://alobacsi.com/tiem-chung-xet-nghiem-c243/p-{0}/"
-          },
-          {
-            "Name": "Y học Cổ truyền",
-            "Url": "https://alobacsi.com/y-hoc-co-truyen-c802/p-{0}/",
-            "SubCategories": [
-              {
-                "Name": "Đông y",
-                "Url": "https://alobacsi.com/dong-y-c347/p-{0}/"
+                "Name": "Trị mụn",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/tri-mun"
               },
               {
-                "Name": "Thầy hay - Thuốc tốt",
-                "Url": "https://alobacsi.com/thay-hay-thuoc-tot-c401/p-{0}/"
-              }
-            ]
-          },
-          {
-            "Name": "Khỏe đẹp",
-            "Url": "https://alobacsi.com/khoe-dep-c165/p-{0}/",
-            "SubCategories": [
-              {
-                "Name": "Tư vấn Làm đẹp",
-                "Url": "https://alobacsi.com/tu-van-lam-dep-c396/p-{0}/"
+                "Name": "Viêm dạ dày",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/viem-da-day"
               },
               {
-                "Name": "Thể dục - Thiền - Yoga",
-                "Url": "https://alobacsi.com/the-duc-thien-yoga-c316/p-{0}/"
+                "Name": "Sỏi mật",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/soi-mat"
+              },
+              {
+                "Name": "Cao huyết áp",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/cao-huyet-ap"
+              },
+              {
+                "Name": "Hen suyễn",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/hen-suyen"
+              },
+              {
+                "Name": "Cảm cúm",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/cam-cum"
+              },
+              {
+                "Name": "Chăm sóc răng miệng",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/cham-soc-rang-mieng"
+              },
+              {
+                "Name": "Mắt và tật khúc xạ",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/mat-va-tat-khuc-xa"
+              },
+              {
+                "Name": "Giảm cân",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/giam-can"
+              },
+              {
+                "Name": "Lọc màng bụng",
+                "Url": "https://alobacsi.com/chuyen-trang-suc-khoe/loc-mang-bung"
               }
             ]
           }
