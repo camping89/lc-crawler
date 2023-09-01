@@ -22,6 +22,14 @@ public abstract class CrawlLCEcommerceBaseService : BaseService, ICrawlLCService
             CrawlerProxy = crawlerProxy;
         }
 
+        if (credential == null)
+        {
+            credential = new CrawlerCredentialEto()
+            {
+                CrawlerProxy = new CrawlerProxy()
+            };
+        }
+
         var             browserContext = await PlaywrightHelper.InitBrowser(GlobalConfig.CrawlConfig.UserDataDirRoot, credential.CrawlerProxy.Ip, credential.CrawlerProxy.Port, 
             credential.CrawlerProxy.Username, credential.CrawlerProxy.Password, new List<CrawlerAccountCookie>(), false);
         await using var browser        = browserContext.Browser;

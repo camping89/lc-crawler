@@ -8,14 +8,15 @@
       }
     },
     "CrawlConfig": {
+      "UserDataDirRoot":"C:\\playwright\\",
       "ActionDelay": 500,
       "TypingDelay": 10,
       "ScrollTimeout": 5000,
       "Crawl_MaxThread": 10,
       "Crawl_BatchSize": 100,
       "ValidateArticleByDateTime": false,
-      "TotalArticles": 100,
-      "DaysIntervalArticles": 1200,
+      "TotalArticles": 10000,
+      "DaysIntervalArticles": 200,
       "SucKhoeDoiSongConfig": {
         "Categories": [
           {
